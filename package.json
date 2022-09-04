@@ -11,8 +11,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "pinia": "^2.0.17",
-    "vue": "^3.2.37"
+    "pinia": "^2.0.21",
+    "vue": "^3.2.37",
+    "vue-multiselect": "^3.0.0-alpha.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",

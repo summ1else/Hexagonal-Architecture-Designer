@@ -1,36 +1,20 @@
 <template>
-  <div v-show="shouldShowAddInput" id="addInputAdapterDiv">
-    <button
-      @click="
-        addInputAdapter({
-          name: 'First Controller',
-          type: 'controller',
-          implementing: ['First Use Case'],
-        })
-      "
-    >
-      Add Input Adapter
-    </button>
-    <label>InputAdapter Name</label>
-    <input v-model="newInputAdapterName" />
-    <label>InputAdapter Type</label>
-    <input v-model="newInputAdapterType" />
-  </div>
-  <button @click="showHideAddInput">Show Add Input Adapter</button>
 
+  <button @click="architecture.showHideAddInput">Show Add Input Adapter</button>
+  <AddInputAdapter :should-show-add-input="architecture.shouldShowAddInput" :add-input-adapter="architecture.addInputAdapter" />
   <div class="inputAdapters typeContainer">
     <InputAdapter
-      v-for="inputAdapter in inputAdapters"
+      v-for="inputAdapter in architecture.inputAdapters"
       :key="inputAdapter.name"
       :implementing="inputAdapter.implementing"
       :name="inputAdapter.name"
       :adapterType="inputAdapter.type"
-      :remove="removeInputAdapter"
+      :remove="architecture.removeInputAdapter"
     ></InputAdapter>
   </div>
   <div class="useCases typeContainer">
     <UseCasePort
-      v-for="useCase in useCases"
+      v-for="useCase in architecture.useCases"
       :key="useCase.iName"
       :methods="useCase.methods"
       :iName="useCase.iName"
@@ -38,7 +22,7 @@
   </div>
   <div class="services typeContainer">
     <Service
-      v-for="service in services"
+      v-for="service in architecture.services"
       :key="service.name"
       :implementing="service.implementing"
       :name="service.name"
@@ -46,7 +30,7 @@
   </div>
   <div class="entities typeContainer">
     <Entity
-      v-for:="entity in entities"
+      v-for:="entity in architecture.entities"
       :key="entity.name"
       :name="entity.name"
       :fields="entity.fields"
@@ -55,7 +39,7 @@
   </div>
   <div class="repositories typeContainer">
     <RepositoryPort
-      v-for="repository in repositories"
+      v-for="repository in architecture.repositories"
       :key="repository.iName"
       :methods="repository.methods"
       :iName="repository.iName"
@@ -63,7 +47,7 @@
   </div>
   <div class="outputAdapters typeContainer">
     <OutputAdapter
-      v-for="outputAdapter in outputAdapters"
+      v-for="outputAdapter in architecture.outputAdapters"
       :key="outputAdapter"
       :implementing="outputAdapter.implementing"
       :name="outputAdapter.name"
@@ -73,92 +57,35 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+import { defineComponent } from "vue";
 import UseCasePortVue from "./components/UseCasePort.vue";
 import RepositoryPortVue from "./components/RepositoryPort.vue";
 import InputAdapterVue from "./components/InputAdapter.vue";
 import OutputAdapterVue from "./components/OutputAdapter.vue";
+import AddInputAdapter from "./components/AddInputAdapter.vue";
 import ServiceVue from "./components/Service.vue";
 import EntityVue from "./components/Entity.vue";
-const state = reactive({});
-export default {
+import { useArchStore } from "./stores/architecture";
+
+export default defineComponent({
   name: "App",
   components: {
+    AddInputAdapter,
     InputAdapter: InputAdapterVue,
     UseCasePort: UseCasePortVue,
     RepositoryPort: RepositoryPortVue,
     OutputAdapter: OutputAdapterVue,
     Service: ServiceVue,
-    Entity: EntityVue,
+    Entity: EntityVue
   },
-  methods: {
-    addInputAdapter() {
-      this.inputAdapters.push({
-        name: this.newInputAdapterName,
-        type: this.newInputAdapterType,
-        implementing: this.newInputAdapterImplementing,
-      });
-    },
-    removeInputAdapter(inputAdapter) {
-      this.inputAdapters.splice(this.inputAdapters.indexOf(inputAdapter), 1);
-    },
-    showHideAddInput() {
-      this.shouldShowAddInput = !this.shouldShowAddInput;
-    },
-  },
-  data() {
+  setup() {
+    const architecture = useArchStore();
+    window.stores = {architecture};
     return {
-      newInputAdapterName: "",
-      newInputAdapterType: "",
-      newInputAdapterImplementing: [],
-      shouldShowAddInput: false,
-      inputAdapters: [
-        {
-          name: "First Controller",
-          type: "controller",
-          implementing: ["First Use Case"],
-        },
-        {
-          name: "Second Controller",
-          type: "controller",
-          implementing: ["First Use Case"],
-        },
-      ],
-      useCases: [
-        {
-          iName: "First Use Case",
-          methods: ["method one", "method two"],
-        },
-      ],
-      services: [
-        {
-          name: "First Service",
-          implementing: ["First Use Case"],
-        },
-      ],
-      entities: [
-        {
-          name: "My Entity",
-          fields: ["id", "user"],
-          methods: ["public static void main(Object... args);"],
-        },
-      ],
-      repositories: [
-        {
-          iName: "First Repository",
-          methods: ["test3", "test4"],
-        },
-      ],
-      outputAdapters: [
-        {
-          name: "JPA Repository",
-          implementing: ["First Repository"],
-          adapterType: "db",
-        },
-      ],
-    };
-  },
-};
+      architecture
+    }
+  }
+});
 </script>
 
 <style>
@@ -172,6 +99,7 @@ export default {
   display: flex;
   justify-content: space-around;
 }
+
 .typeContainer > div {
   margin: 10px;
   padding: 10px;
@@ -181,21 +109,27 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 .inputAdapters > div {
   background-color: pink;
 }
+
 .useCases > div {
   background-color: cornflowerblue;
 }
+
 .services > div {
   background-color: tan;
 }
+
 .entities > div {
   background-color: lightgreen;
 }
+
 .repositories > div {
   background-color: lightsalmon;
 }
+
 .outputAdapters > div {
   background-color: lightseagreen;
 }
