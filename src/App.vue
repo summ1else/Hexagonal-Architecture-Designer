@@ -1,7 +1,9 @@
 <template>
 
   <button @click="architecture.showHideAddInput">Show Add Input Adapter</button>
-  <AddInputAdapter :should-show-add-input="architecture.shouldShowAddInput" :add-input-adapter="architecture.addInputAdapter" />
+  <AddInputAdapter :should-show-add-input="architecture.shouldShowAddInput"
+                   :input-adapter-names="architecture.getAllUseCaseNames"
+                   :add-input-adapter="architecture.addInputAdapter"/>
   <div class="inputAdapters typeContainer">
     <InputAdapter
       v-for="inputAdapter in architecture.inputAdapters"

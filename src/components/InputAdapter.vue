@@ -42,5 +42,8 @@ ul {
   background-color: orange;
   padding: 0;
 }
+li {
+  display: inline;
+}
 </style>
 

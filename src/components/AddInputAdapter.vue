@@ -1,7 +1,16 @@
 <template>
   <div v-show="shouldShowAddInput" id="addInputAdapterDiv">
+
+    <label for="newInputAdapterName">InputAdapter Name
+    <input id="newInputAdapterName" v-model="newInputAdapterName"/></label>
+    <label for="newInputAdapterType">InputAdapter Type
+    <input id="newInputAdapterType" v-model="newInputAdapterType"/></label>
+    <VueMultiselect v-model="newInputAdapterImplementing"
+                    :multiple="true"
+                    :options="inputAdapterNames">
+    </VueMultiselect>
     <button
-      @click="
+        @click="
         addInputAdapter({
           name: newInputAdapterName,
           type: newInputAdapterType,
@@ -11,13 +20,6 @@
     >
       Add Input Adapter
     </button>
-    <label>InputAdapter Name</label>
-    <input v-model="newInputAdapterName" />
-    <label>InputAdapter Type</label>
-    <input v-model="newInputAdapterType" />
-    <VueMultiselect v-model="newInputAdapterImplementing"
-                    :options="inputAdapterNames">
-    </VueMultiselect>
   </div>
 </template>
 
@@ -28,21 +30,32 @@ export default {
 </script>
 
 <script setup>
-import { ref } from "vue";
+import {ref} from "vue";
 import VueMultiselect from "vue-multiselect";
+
 const newInputAdapterName = ref("");
 const newInputAdapterType = ref("");
-const newInputAdapterImplementing = ref('list');
-const inputAdapterNames = ref(["list", "of", "options"]);
+const newInputAdapterImplementing = ref([]);
+// const inputAdapterNames = ref(["list", "of", "options"]);
 const props = defineProps({
-    addInputAdapter: Function,
-    shouldShowAddInput: Boolean
-    // inputAdapterNames: Array
-  });
+  addInputAdapter: Function,
+  shouldShowAddInput: Boolean,
+  inputAdapterNames: Array
+});
 console.log(props);
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
+#addInputAdapterDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
 </style>

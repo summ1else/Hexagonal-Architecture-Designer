@@ -51,7 +51,7 @@ export const useArchStore = defineStore({
   }),
   getters: {
     getAllUseCaseNames() {
-      return this.useCases.map((inputPort) => inputPort.name);
+      return this.useCases.map((inputPort) => inputPort.iName);
     },
     getAllRepositoryNames() {
       return this.repositories.map((repository) => repository.iName);
