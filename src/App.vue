@@ -1,14 +1,27 @@
 <template>
-
+  <ul v-show="architecture.getUnimplementedUseCases.length > 0">
+    <li>Unimplemented UseCases</li>
+    <li v-for="useCase in architecture.getUnimplementedUseCases" :key="useCase">
+      {{ useCase }}
+    </li>
+  </ul>
+  <ul>
+    <li>Uncalled UseCases</li>
+    <li v-for="useCase in architecture.getUncalledUseCases" :key="useCase">
+      {{ useCase }}
+    </li>
+  </ul>
   <button @click="architecture.showHideAddInput">Show Add Input Adapter</button>
-  <AddInputAdapter :should-show-add-input="architecture.shouldShowAddInput"
-                   :input-adapter-names="architecture.getAllUseCaseNames"
-                   :add-input-adapter="architecture.addInputAdapter"/>
+  <AddInputAdapter
+    :should-show-add-input="architecture.shouldShowAddInput"
+    :input-adapter-names="architecture.getAllUseCaseNames"
+    :add-input-adapter="architecture.addInputAdapter"
+  />
   <div class="inputAdapters typeContainer">
     <InputAdapter
       v-for="inputAdapter in architecture.inputAdapters"
       :key="inputAdapter.name"
-      :implementing="inputAdapter.implementing"
+      :calling="inputAdapter.calling"
       :name="inputAdapter.name"
       :adapterType="inputAdapter.type"
       :remove="architecture.removeInputAdapter"
@@ -78,15 +91,15 @@ export default defineComponent({
     RepositoryPort: RepositoryPortVue,
     OutputAdapter: OutputAdapterVue,
     Service: ServiceVue,
-    Entity: EntityVue
+    Entity: EntityVue,
   },
   setup() {
     const architecture = useArchStore();
-    window.stores = {architecture};
+    window.stores = { architecture };
     return {
-      architecture
-    }
-  }
+      architecture,
+    };
+  },
 });
 </script>
 
@@ -134,5 +147,9 @@ export default defineComponent({
 
 .outputAdapters > div {
   background-color: lightseagreen;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 </style>
