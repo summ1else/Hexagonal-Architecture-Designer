@@ -1,5 +1,4 @@
 <template>
-  <button @click="remove">x</button>
   <div class="container">
     {{ name }} <br />
     {{ adapterType }}
@@ -18,7 +17,6 @@ export default {
     name: String,
     implementing: Array,
     adapterType: String,
-    remove: Function
   },
 };
 </script>
@@ -46,4 +44,3 @@ li {
   display: inline;
 }
 </style>
-

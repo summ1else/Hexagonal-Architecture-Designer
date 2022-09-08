@@ -1,18 +1,22 @@
 <template>
-
   <button @click="architecture.showHideAddInput">Show Add Input Adapter</button>
-  <AddInputAdapter :should-show-add-input="architecture.shouldShowAddInput"
-                   :input-adapter-names="architecture.getAllUseCaseNames"
-                   :add-input-adapter="architecture.addInputAdapter"/>
+  <AddInputAdapter
+    :should-show-add-input="architecture.shouldShowAddInput"
+    :input-adapter-names="architecture.getAllUseCaseNames"
+    :add-input-adapter="architecture.addInputAdapter"
+  />
   <div class="inputAdapters typeContainer">
-    <InputAdapter
+    <RemovableComponentContainer
       v-for="inputAdapter in architecture.inputAdapters"
-      :key="inputAdapter.name"
-      :implementing="inputAdapter.implementing"
-      :name="inputAdapter.name"
-      :adapterType="inputAdapter.type"
       :remove="architecture.removeInputAdapter"
-    ></InputAdapter>
+      :key="inputAdapter.name"
+    >
+      <InputAdapter
+        :implementing="inputAdapter.implementing"
+        :name="inputAdapter.name"
+        :adapterType="inputAdapter.type"
+      ></InputAdapter>
+    </RemovableComponentContainer>
   </div>
   <div class="useCases typeContainer">
     <UseCasePort
@@ -68,25 +72,27 @@ import AddInputAdapter from "./components/AddInputAdapter.vue";
 import ServiceVue from "./components/Service.vue";
 import EntityVue from "./components/Entity.vue";
 import { useArchStore } from "./stores/architecture";
+import RemovableComponentContainer from "./components/RemovableComponentContainer.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    RemovableComponentContainer,
     AddInputAdapter,
     InputAdapter: InputAdapterVue,
     UseCasePort: UseCasePortVue,
     RepositoryPort: RepositoryPortVue,
     OutputAdapter: OutputAdapterVue,
     Service: ServiceVue,
-    Entity: EntityVue
+    Entity: EntityVue,
   },
   setup() {
     const architecture = useArchStore();
-    window.stores = {architecture};
+    window.stores = { architecture };
     return {
-      architecture
-    }
-  }
+      architecture,
+    };
+  },
 });
 </script>
 
