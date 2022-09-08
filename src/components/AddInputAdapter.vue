@@ -9,7 +9,7 @@
       <input id="newInputAdapterType" v-model="newInputAdapterType"
     /></label>
     <VueMultiselect
-      v-model="newInputAdapterImplementing"
+      v-model="newInputAdapterCalling"
       :multiple="true"
       :options="inputAdapterNames"
     >
@@ -19,7 +19,7 @@
         addInputAdapter({
           name: newInputAdapterName,
           type: newInputAdapterType,
-          implementing: newInputAdapterImplementing,
+          calling: newInputAdapterCalling,
         })
       "
     >
@@ -40,7 +40,7 @@ import VueMultiselect from "vue-multiselect";
 
 const newInputAdapterName = ref("");
 const newInputAdapterType = ref("");
-const newInputAdapterImplementing = ref([]);
+const newInputAdapterCalling = ref([]);
 // const inputAdapterNames = ref(["list", "of", "options"]);
 const props = defineProps({
   addInputAdapter: Function,

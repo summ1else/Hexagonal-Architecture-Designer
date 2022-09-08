@@ -8,77 +8,111 @@ export const useArchStore = defineStore({
       {
         name: "First Controller",
         type: "controller",
-        implementing: ["First Use Case"]
+        calling: ["First Use Case"],
       },
       {
         name: "Second Controller",
         type: "controller",
-        implementing: ["First Use Case"]
-      }
+        calling: ["First Use Case"],
+      },
     ],
     useCases: [
       {
         iName: "First Use Case",
-        methods: ["method one", "method two"]
-      }
+        methods: ["method one", "method two"],
+      },
     ],
     services: [
       {
         name: "First Service",
-        implementing: ["First Use Case"]
-      }
+        implementing: ["First Use Case"],
+      },
     ],
     entities: [
       {
         name: "My Entity",
         fields: ["id", "user"],
-        methods: ["public static void main(Object... args);"]
-      }
+        methods: ["public static void main(Object... args);"],
+      },
     ],
     repositories: [
       {
         iName: "First Repository",
-        methods: ["test3", "test4"]
-      }
+        methods: ["test3", "test4"],
+      },
     ],
     outputAdapters: [
       {
         name: "JPA Repository",
         implementing: ["First Repository"],
-        adapterType: "db"
-      }
-    ]
+        adapterType: "db",
+      },
+    ],
   }),
   getters: {
-    getAllUseCaseNames() {
-      return this.useCases.map((inputPort) => inputPort.iName);
+    getAllUseCaseNames(state) {
+      return state.useCases.map((inputPort) => inputPort.iName);
     },
-    getAllRepositoryNames() {
-      return this.repositories.map((repository) => repository.iName);
+    getAllRepositoryNamee(state) {
+      return state.repositories.map((repository) => repository.iName);
     },
-    getAllOutputAdapterNames() {
-      return this.outputAdapters.map((outputAdapter) => outputAdapter.name);
+    getAllOutputAdapterName(state) {
+      return state.outputAdapters.map((outputAdapter) => outputAdapter.name);
     },
-    getAllInputAdapterNames() {
-      return this.inputAdapters.map((inputAdapter) => inputAdapter.name);
+    getAllInputAdapterNames(state) {
+      return state.inputAdapters.map((inputAdapter) => inputAdapter.name);
     },
-    getAllEntityNames() {
-      return this.entities.map((entity) => entity.name);
+    getAllEntityNames(state) {
+      return state.entities.map((entity) => entity.name);
     },
-    getAllServiceNames() {
-      return this.services.map((service) => service.name);
+    getAllServiceNames(state) {
+      return state.services.map((service) => service.name);
+    },
+    getImplementedUseCases(state) {
+      if (state.services.length === 0) {
+        return this.getAllUseCaseNames;
+      }
+      return this.getAllUseCaseNames.filter(
+        (useCase) =>
+          state.services.filter((service) =>
+            service.implementing.includes(useCase)
+          ).length > 0
+      );
+    },
+    getUnimplementedUseCases() {
+      return this.getAllUseCaseNames.filter(
+        (name) => !this.getImplementedUseCases.includes(name)
+      );
+    },
+    getCalledUseCases(state) {
+      console.log(state.inputAdapters.length);
+      if (state.inputAdapters.length === 0) {
+        console.log("called", []);
+        return [];
+      }
+      let calledUseCases = this.getAllUseCaseNames.filter(
+        (useCase) =>
+          state.inputAdapters.filter((inputAdapter) =>
+            inputAdapter.calling.includes(useCase)
+          ).length > 0
+      );
+      console.log("called", calledUseCases);
+      return calledUseCases;
+    },
+    getUncalledUseCases() {
+      let uncalledUseCases = this.getAllUseCaseNames.filter(
+        (name) => !this.getCalledUseCases.includes(name)
+      );
+      console.log("uncalled", uncalledUseCases);
+      return uncalledUseCases;
     },
   },
   actions: {
-    addInputAdapter({
-      name,
-      type,
-      implementing,
-    }) {
+    addInputAdapter({ name, type, calling }) {
       this.inputAdapters.push({
         name,
         type,
-        implementing,
+        calling,
       });
     },
     removeInputAdapter(inputAdapter) {
@@ -86,6 +120,6 @@ export const useArchStore = defineStore({
     },
     showHideAddInput() {
       this.shouldShowAddInput = !this.shouldShowAddInput;
-    }
-  }
+    },
+  },
 });

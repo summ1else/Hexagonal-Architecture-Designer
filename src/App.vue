@@ -1,4 +1,16 @@
 <template>
+  <ul v-show="architecture.getUnimplementedUseCases.length > 0">
+    <li>Unimplemented UseCases</li>
+    <li v-for="useCase in architecture.getUnimplementedUseCases" :key="useCase">
+      {{ useCase }}
+    </li>
+  </ul>
+  <ul>
+    <li>Uncalled UseCases</li>
+    <li v-for="useCase in architecture.getUncalledUseCases" :key="useCase">
+      {{ useCase }}
+    </li>
+  </ul>
   <button @click="architecture.showHideAddInput">Show Add Input Adapter</button>
   <AddInputAdapter
     :should-show-add-input="architecture.shouldShowAddInput"
@@ -9,13 +21,12 @@
     <RemovableComponentContainer
       v-for="inputAdapter in architecture.inputAdapters"
       :remove="architecture.removeInputAdapter"
-      :key="inputAdapter.name"
-    >
+      :key="inputAdapter.name">
       <InputAdapter
-        :implementing="inputAdapter.implementing"
-        :name="inputAdapter.name"
-        :adapterType="inputAdapter.type"
-      ></InputAdapter>
+      :calling="inputAdapter.calling"
+      :name="inputAdapter.name"
+      :adapterType="inputAdapter.type"
+    ></InputAdapter>
     </RemovableComponentContainer>
   </div>
   <div class="useCases typeContainer">
@@ -140,5 +151,9 @@ export default defineComponent({
 
 .outputAdapters > div {
   background-color: lightseagreen;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 </style>

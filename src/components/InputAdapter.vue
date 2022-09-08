@@ -3,7 +3,7 @@
     {{ name }} <br />
     {{ adapterType }}
     <ul>
-      <li v-for="iface in implementing" :key="iface">
+      <li v-for="iface in calling" :key="iface">
         {{ iface }}
       </li>
     </ul>
@@ -15,7 +15,7 @@ export default {
   name: "InputAdapter",
   props: {
     name: String,
-    implementing: Array,
+    calling: Array,
     adapterType: String,
   },
 };
