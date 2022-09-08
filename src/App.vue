@@ -19,40 +19,51 @@
   />
   <div class="inputAdapters typeContainer">
     <RemovableComponentContainer
-      v-for="inputAdapter in architecture.inputAdapters"
+      v-for="(inputAdapter, idx) in architecture.inputAdapters"
       :remove="architecture.removeInputAdapter"
-      :key="inputAdapter.name">
+      :idx="idx"
+      :key="inputAdapter.name"
+    >
       <InputAdapter
-      :calling="inputAdapter.calling"
-      :name="inputAdapter.name"
-      :adapterType="inputAdapter.type"
-    ></InputAdapter>
+        :calling="inputAdapter.calling"
+        :name="inputAdapter.name"
+        :adapterType="inputAdapter.type"
+      ></InputAdapter>
     </RemovableComponentContainer>
   </div>
   <div class="useCases typeContainer">
-    <UseCasePort
-      v-for="useCase in architecture.useCases"
+    <RemovableComponentContainer
+      v-for="(useCase, idx) in architecture.useCases"
+      :remove="architecture.removeUseCase"
+      :idx="idx"
       :key="useCase.iName"
-      :methods="useCase.methods"
-      :iName="useCase.iName"
-    />
+    >
+      <UseCasePort :methods="useCase.methods" :iName="useCase.iName" />
+    </RemovableComponentContainer>
   </div>
   <div class="services typeContainer">
-    <Service
-      v-for="service in architecture.services"
+    <RemovableComponentContainer
+      v-for="(service, idx) in architecture.services"
+      :remove="architecture.removeService"
+      :idx="idx"
       :key="service.name"
-      :implementing="service.implementing"
-      :name="service.name"
-    />
+    >
+      <Service :implementing="service.implementing" :name="service.name" />
+    </RemovableComponentContainer>
   </div>
   <div class="entities typeContainer">
-    <Entity
-      v-for:="entity in architecture.entities"
+    <RemovableComponentContainer
+      v-for="(entity, idx) in architecture.entities"
+      :remove="architecture.removeEntity"
+      :idx="idx"
       :key="entity.name"
-      :name="entity.name"
-      :fields="entity.fields"
-      :methods="entity.methods"
-    />
+    >
+      <Entity
+        :name="entity.name"
+        :fields="entity.fields"
+        :methods="entity.methods"
+      />
+    </RemovableComponentContainer>
   </div>
   <div class="repositories typeContainer">
     <RepositoryPort

@@ -115,8 +115,17 @@ export const useArchStore = defineStore({
         calling,
       });
     },
-    removeInputAdapter(inputAdapter) {
-      this.inputAdapters.splice(this.inputAdapters.indexOf(inputAdapter), 1);
+    removeInputAdapter(idx) {
+      this.inputAdapters.splice(idx, 1);
+    },
+    removeUseCase(idx) {
+      this.useCases.splice(idx, 1);
+    },
+    removeService(idx) {
+      this.services.splice(idx, 1);
+    },
+    removeEntity(idx) {
+      this.entities.splice(idx, 1);
     },
     showHideAddInput() {
       this.shouldShowAddInput = !this.shouldShowAddInput;

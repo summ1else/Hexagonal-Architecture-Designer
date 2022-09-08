@@ -1,5 +1,5 @@
 <template>
-  <button @click="remove">x</button>
+  <button @click="remove(idx)">x</button>
   <slot></slot>
 </template>
 
@@ -8,6 +8,7 @@ export default {
   name: "RemovableComponentContainer",
   props: {
     remove: Function,
+    idx: Number,
   },
 };
 </script>
