@@ -1,5 +1,5 @@
 <template>
-  <div id="addInputAdapterDiv">
+  <div id="addUseCasePortDiv">
     <label for="newInputAdapterName"
       >InputAdapter Name
       <input id="newInputAdapterName" v-model="newInputAdapterName"
@@ -51,7 +51,7 @@ console.log(props);
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
-#addInputAdapterDiv {
+#addUseCasePortDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

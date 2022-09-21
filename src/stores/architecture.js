@@ -114,6 +114,12 @@ export const useArchStore = defineStore({
         calling,
       });
     },
+    addUseCasePort({ iName, methods }) {
+      this.useCases.push({
+        iName,
+        methods,
+      });
+    },
     removeInputAdapter(idx) {
       this.inputAdapters.splice(idx, 1);
     },

@@ -29,6 +29,7 @@
       </RemovableComponentContainer>
     </div>
     <div class="useCases typeContainer">
+      <AddUseCasePort :add-use-case-port="architecture.addUseCasePort" />
       <RemovableComponentContainer
         v-for="(useCase, idx) in architecture.useCases"
         :remove="architecture.removeUseCase"
@@ -110,7 +111,8 @@ import UseCasePortVue from "./components/UseCasePort.vue";
 import RepositoryPortVue from "./components/RepositoryPort.vue";
 import InputAdapterVue from "./components/InputAdapter.vue";
 import OutputAdapterVue from "./components/OutputAdapter.vue";
-import AddInputAdapter from "./components/AddInputAdapter.vue";
+import AddInputAdapterVue from "./components/AddInputAdapter.vue";
+import AddUseCasePortVue from "./components/AddUseCasePort.vue";
 import ServiceVue from "./components/Service.vue";
 import EntityVue from "./components/Entity.vue";
 import { useArchStore } from "./stores/architecture";
@@ -120,7 +122,8 @@ export default defineComponent({
   name: "App",
   components: {
     RemovableComponentContainer,
-    AddInputAdapter,
+    AddInputAdapter: AddInputAdapterVue,
+    AddUseCasePort: AddUseCasePortVue,
     InputAdapter: InputAdapterVue,
     UseCasePort: UseCasePortVue,
     RepositoryPort: RepositoryPortVue,

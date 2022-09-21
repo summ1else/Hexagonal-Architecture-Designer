@@ -2,8 +2,8 @@
   <div class="container">
     {{ iName }}
     <ul>
-      <li v-for="method in methods" :key="method.name">
-        {{ method.name }}
+      <li v-for="method in methods" :key="method">
+        {{ method }}
       </li>
     </ul>
   </div>
@@ -39,4 +39,3 @@ ul {
   padding: 0;
 }
 </style>
-
