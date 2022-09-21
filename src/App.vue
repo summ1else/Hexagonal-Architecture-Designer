@@ -82,6 +82,7 @@
       </RemovableComponentContainer>
     </div>
     <div class="repositories typeContainer">
+      <AddRepository :add-repository="architecture.addRepository" />
       <RemovableComponentContainer
         v-for="(repository, idx) in architecture.repositories"
         :remove="architecture.removeRepository"
@@ -95,6 +96,10 @@
       </RemovableComponentContainer>
     </div>
     <div class="outputAdapters typeContainer">
+      <AddOutputAdapter
+        :add-output-adapter="architecture.addOutputAdapter"
+        :repository-names="architecture.getAllRepositoryNames"
+      />
       <RemovableComponentContainer
         v-for="(outputAdapter, idx) in architecture.outputAdapters"
         :remove="architecture.removeOutputAdapter"
@@ -102,7 +107,7 @@
         :key="outputAdapter.name"
       >
         <OutputAdapter
-          :implementing="outputAdapter.implementing"
+          :calling="outputAdapter.calling"
           :name="outputAdapter.name"
           :adapter-type="outputAdapter.adapterType"
         />
@@ -125,10 +130,14 @@ import ServiceVue from "./components/Service.vue";
 import EntityVue from "./components/Entity.vue";
 import { useArchStore } from "./stores/architecture";
 import RemovableComponentContainer from "./components/RemovableComponentContainer.vue";
+import AddRepositoryVue from "./components/AddRepository.vue";
+import AddOutputAdapterVue from "./components/AddOutputAdapter.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    AddOutputAdapter: AddOutputAdapterVue,
+    AddRepository: AddRepositoryVue,
     RemovableComponentContainer,
     AddInputAdapter: AddInputAdapterVue,
     AddUseCasePort: AddUseCasePortVue,

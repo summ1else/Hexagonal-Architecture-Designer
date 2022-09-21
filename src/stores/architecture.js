@@ -43,7 +43,7 @@ export const useArchStore = defineStore({
     outputAdapters: [
       {
         name: "JPA Repository",
-        implementing: ["First Repository"],
+        calling: ["First Repository"],
         adapterType: "db",
       },
     ],
@@ -55,7 +55,7 @@ export const useArchStore = defineStore({
     getAllRepositoryNames(state) {
       return state.repositories.map((repository) => repository.iName);
     },
-    getAllOutputAdapterName(state) {
+    getAllOutputAdapterNames(state) {
       return state.outputAdapters.map((outputAdapter) => outputAdapter.name);
     },
     getAllInputAdapterNames(state) {
@@ -125,6 +125,16 @@ export const useArchStore = defineStore({
         name,
         fields,
         methods,
+      });
+    },
+    addRepository({ iName, methods }) {
+      this.repositories.push({ iName, methods });
+    },
+    addOutputAdapter({ name, calling, adapterType }) {
+      this.outputAdapters.push({
+        name,
+        calling,
+        adapterType,
       });
     },
     addService({ name, implementing }) {
