@@ -52,7 +52,7 @@ export const useArchStore = defineStore({
     getAllUseCaseNames(state) {
       return state.useCases.map((inputPort) => inputPort.iName);
     },
-    getAllRepositoryNamee(state) {
+    getAllRepositoryNames(state) {
       return state.repositories.map((repository) => repository.iName);
     },
     getAllOutputAdapterName(state) {
@@ -119,6 +119,9 @@ export const useArchStore = defineStore({
         iName,
         methods,
       });
+    },
+    addService({ name, implementing }) {
+      this.services.push({ name, implementing });
     },
     removeInputAdapter(idx) {
       this.inputAdapters.splice(idx, 1);
