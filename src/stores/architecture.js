@@ -120,6 +120,13 @@ export const useArchStore = defineStore({
         methods,
       });
     },
+    addEntity({ name, fields, methods }) {
+      this.entities.push({
+        name,
+        fields,
+        methods,
+      });
+    },
     addService({ name, implementing }) {
       this.services.push({ name, implementing });
     },

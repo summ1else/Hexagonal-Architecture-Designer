@@ -67,6 +67,7 @@
       </RemovableComponentContainer>
     </div>
     <div class="entities typeContainer">
+      <AddEntity :add-entity="architecture.addEntity" />
       <RemovableComponentContainer
         v-for="(entity, idx) in architecture.entities"
         :remove="architecture.removeEntity"
@@ -119,6 +120,7 @@ import OutputAdapterVue from "./components/OutputAdapter.vue";
 import AddInputAdapterVue from "./components/AddInputAdapter.vue";
 import AddUseCasePortVue from "./components/AddUseCasePort.vue";
 import AddServiceVue from "./components/AddService.vue";
+import AddEntityVue from "./components/AddEntity.vue";
 import ServiceVue from "./components/Service.vue";
 import EntityVue from "./components/Entity.vue";
 import { useArchStore } from "./stores/architecture";
@@ -131,6 +133,7 @@ export default defineComponent({
     AddInputAdapter: AddInputAdapterVue,
     AddUseCasePort: AddUseCasePortVue,
     AddService: AddServiceVue,
+    AddEntity: AddEntityVue,
     InputAdapter: InputAdapterVue,
     UseCasePort: UseCasePortVue,
     RepositoryPort: RepositoryPortVue,
