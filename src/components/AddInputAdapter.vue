@@ -1,5 +1,5 @@
 <template>
-  <div v-show="shouldShowAddInput" id="addInputAdapterDiv">
+  <div id="addInputAdapterDiv">
     <label for="newInputAdapterName"
       >InputAdapter Name
       <input id="newInputAdapterName" v-model="newInputAdapterName"
@@ -44,7 +44,6 @@ const newInputAdapterCalling = ref([]);
 // const inputAdapterNames = ref(["list", "of", "options"]);
 const props = defineProps({
   addInputAdapter: Function,
-  shouldShowAddInput: Boolean,
   inputAdapterNames: Array,
 });
 console.log(props);

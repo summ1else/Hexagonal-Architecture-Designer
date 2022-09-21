@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 export const useArchStore = defineStore({
   id: "architecture",
   state: () => ({
-    shouldShowAddInput: false,
     inputAdapters: [
       {
         name: "First Controller",
@@ -127,8 +126,11 @@ export const useArchStore = defineStore({
     removeEntity(idx) {
       this.entities.splice(idx, 1);
     },
-    showHideAddInput() {
-      this.shouldShowAddInput = !this.shouldShowAddInput;
+    removeRepository(idx) {
+      this.repositories.splice(idx, 1);
+    },
+    removeOutputAdapter(idx) {
+      this.outputAdapters.splice(idx, 1);
     },
   },
 });

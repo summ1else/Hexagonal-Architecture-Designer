@@ -1,86 +1,106 @@
 <template>
-  <ul v-show="architecture.getUnimplementedUseCases.length > 0">
-    <li>Unimplemented UseCases</li>
-    <li v-for="useCase in architecture.getUnimplementedUseCases" :key="useCase">
-      {{ useCase }}
-    </li>
-  </ul>
-  <ul>
-    <li>Uncalled UseCases</li>
-    <li v-for="useCase in architecture.getUncalledUseCases" :key="useCase">
-      {{ useCase }}
-    </li>
-  </ul>
-  <button @click="architecture.showHideAddInput">Show Add Input Adapter</button>
-  <AddInputAdapter
-    :should-show-add-input="architecture.shouldShowAddInput"
-    :input-adapter-names="architecture.getAllUseCaseNames"
-    :add-input-adapter="architecture.addInputAdapter"
-  />
-  <div class="inputAdapters typeContainer">
-    <RemovableComponentContainer
-      v-for="(inputAdapter, idx) in architecture.inputAdapters"
-      :remove="architecture.removeInputAdapter"
-      :idx="idx"
-      :key="inputAdapter.name"
-    >
-      <InputAdapter
-        :calling="inputAdapter.calling"
-        :name="inputAdapter.name"
-        :adapterType="inputAdapter.type"
-      ></InputAdapter>
-    </RemovableComponentContainer>
-  </div>
-  <div class="useCases typeContainer">
-    <RemovableComponentContainer
-      v-for="(useCase, idx) in architecture.useCases"
-      :remove="architecture.removeUseCase"
-      :idx="idx"
-      :key="useCase.iName"
-    >
-      <UseCasePort :methods="useCase.methods" :iName="useCase.iName" />
-    </RemovableComponentContainer>
-  </div>
-  <div class="services typeContainer">
-    <RemovableComponentContainer
-      v-for="(service, idx) in architecture.services"
-      :remove="architecture.removeService"
-      :idx="idx"
-      :key="service.name"
-    >
-      <Service :implementing="service.implementing" :name="service.name" />
-    </RemovableComponentContainer>
-  </div>
-  <div class="entities typeContainer">
-    <RemovableComponentContainer
-      v-for="(entity, idx) in architecture.entities"
-      :remove="architecture.removeEntity"
-      :idx="idx"
-      :key="entity.name"
-    >
-      <Entity
-        :name="entity.name"
-        :fields="entity.fields"
-        :methods="entity.methods"
+  <div id="header"></div>
+  <div id="containers">
+    <div class="inputAdapters typeContainer">
+      <AddInputAdapter
+        :input-adapter-names="architecture.getAllUseCaseNames"
+        :add-input-adapter="architecture.addInputAdapter"
       />
-    </RemovableComponentContainer>
-  </div>
-  <div class="repositories typeContainer">
-    <RepositoryPort
-      v-for="repository in architecture.repositories"
-      :key="repository.iName"
-      :methods="repository.methods"
-      :iName="repository.iName"
-    />
-  </div>
-  <div class="outputAdapters typeContainer">
-    <OutputAdapter
-      v-for="outputAdapter in architecture.outputAdapters"
-      :key="outputAdapter"
-      :implementing="outputAdapter.implementing"
-      :name="outputAdapter.name"
-      :adapter-type="outputAdapter.adapterType"
-    />
+      <ul>
+        <li>Uncalled UseCases</li>
+        <li v-show="architecture.getUnimplementedUseCases.length === 0">
+          None
+        </li>
+        <li v-for="useCase in architecture.getUncalledUseCases" :key="useCase">
+          {{ useCase }}
+        </li>
+      </ul>
+      <RemovableComponentContainer
+        v-for="(inputAdapter, idx) in architecture.inputAdapters"
+        :remove="architecture.removeInputAdapter"
+        :idx="idx"
+        :key="inputAdapter.name"
+      >
+        <InputAdapter
+          :calling="inputAdapter.calling"
+          :name="inputAdapter.name"
+          :adapterType="inputAdapter.type"
+        ></InputAdapter>
+      </RemovableComponentContainer>
+    </div>
+    <div class="useCases typeContainer">
+      <RemovableComponentContainer
+        v-for="(useCase, idx) in architecture.useCases"
+        :remove="architecture.removeUseCase"
+        :idx="idx"
+        :key="useCase.iName"
+      >
+        <UseCasePort :methods="useCase.methods" :iName="useCase.iName" />
+      </RemovableComponentContainer>
+    </div>
+    <div class="services typeContainer">
+      <ul>
+        <li>Unimplemented UseCases</li>
+        <li v-show="architecture.getUnimplementedUseCases.length === 0">
+          None
+        </li>
+        <li
+          v-for="useCase in architecture.getUnimplementedUseCases"
+          :key="useCase"
+        >
+          {{ useCase }}
+        </li>
+      </ul>
+      <RemovableComponentContainer
+        v-for="(service, idx) in architecture.services"
+        :remove="architecture.removeService"
+        :idx="idx"
+        :key="service.name"
+      >
+        <Service :implementing="service.implementing" :name="service.name" />
+      </RemovableComponentContainer>
+    </div>
+    <div class="entities typeContainer">
+      <RemovableComponentContainer
+        v-for="(entity, idx) in architecture.entities"
+        :remove="architecture.removeEntity"
+        :idx="idx"
+        :key="entity.name"
+      >
+        <Entity
+          :name="entity.name"
+          :fields="entity.fields"
+          :methods="entity.methods"
+        />
+      </RemovableComponentContainer>
+    </div>
+    <div class="repositories typeContainer">
+      <RemovableComponentContainer
+        v-for="(repository, idx) in architecture.repositories"
+        :remove="architecture.removeRepository"
+        :idx="idx"
+        :key="repository.iName"
+      >
+        <RepositoryPort
+          :methods="repository.methods"
+          :iName="repository.iName"
+        />
+      </RemovableComponentContainer>
+    </div>
+    <div class="outputAdapters typeContainer">
+      <RemovableComponentContainer
+        v-for="(outputAdapter, idx) in architecture.outputAdapters"
+        :remove="architecture.removeOutputAdapter"
+        :idx="idx"
+        :key="outputAdapter.name"
+      >
+        <OutputAdapter
+          :implementing="outputAdapter.implementing"
+          :name="outputAdapter.name"
+          :adapter-type="outputAdapter.adapterType"
+        />
+      </RemovableComponentContainer>
+    </div>
   </div>
 </template>
 
@@ -127,7 +147,22 @@ export default defineComponent({
   color: #2c3e50;
   margin-top: 60px;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 10em;
+  background-color: antiquewhite;
+}
+
+#containers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .typeContainer > div {
@@ -163,6 +198,7 @@ export default defineComponent({
 .outputAdapters > div {
   background-color: lightseagreen;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
