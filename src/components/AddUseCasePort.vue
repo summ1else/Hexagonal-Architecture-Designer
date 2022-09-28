@@ -5,9 +5,16 @@
       <input id="newUseCasePortName" v-model="newUseCasePortName"
     /></label>
     <ul>
-      <li v-for="method in newUseCasePortMethods" :key="method">
-        {{ method }}
-      </li>
+      <RemovableComponentContainer
+        v-for="(method, idx) in newUseCasePortMethods"
+        :key="method"
+        :remove="removeMethod"
+        :idx="idx"
+      >
+        <li>
+          {{ method }}
+        </li>
+      </RemovableComponentContainer>
     </ul>
     <label for="newInputAdapterType"
       >New Method
@@ -36,6 +43,7 @@ export default {
 
 <script setup>
 import { ref } from "vue";
+import RemovableComponentContainer from "@/components/RemovableComponentContainer.vue";
 // import VueMultiselect from "vue-multiselect";
 const newUseCasePortName = ref("");
 const newUseCasePortMethods = ref([]);
@@ -45,8 +53,12 @@ const props = defineProps({
 });
 
 function addMethod() {
-  this.newUseCasePortMethods.push(newUseCasePortMethod.value);
+  newUseCasePortMethods.value.push(newUseCasePortMethod.value);
 }
+
+const removeMethod = (idx) => {
+  newUseCasePortMethods.value.splice(idx, 1);
+};
 
 console.log(props);
 </script>

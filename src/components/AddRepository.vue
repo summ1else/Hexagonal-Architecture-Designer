@@ -5,9 +5,16 @@
       <input id="newRepositoryName" v-model="newRepositoryName"
     /></label>
     <ul>
-      <li v-for="method in newRepositoryMethods" :key="method">
-        {{ method }}
-      </li>
+      <RemovableComponentContainer
+        v-for="(method, idx) in newRepositoryMethods"
+        :key="method"
+        :idx="idx"
+        :remove="removeMethod"
+      >
+        <li>
+          {{ method }}
+        </li>
+      </RemovableComponentContainer>
     </ul>
     <label for="newInputAdapterType"
       >New Method <input id="newInputAdapterType" v-model="newRepositoryMethod"
@@ -36,6 +43,7 @@ export default {
 <script setup>
 import { ref } from "vue";
 // import VueMultiselect from "vue-multiselect";
+import RemovableComponentContainer from "@/components/RemovableComponentContainer.vue";
 const newRepositoryName = ref("");
 const newRepositoryMethods = ref([]);
 const newRepositoryMethod = ref("");
@@ -44,7 +52,11 @@ const props = defineProps({
 });
 
 function addMethod() {
-  this.newRepositoryMethods.push(newRepositoryMethod.value);
+  newRepositoryMethods.value.push(newRepositoryMethod.value);
+}
+
+function removeMethod(idx) {
+  newRepositoryMethods.value.splice(idx, 1);
 }
 
 console.log(props);
@@ -52,7 +64,7 @@ console.log(props);
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
-#addUseCasePortDiv {
+#addRepositoryDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

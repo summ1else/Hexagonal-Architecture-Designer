@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    {{ iName }}
+    <span class="name">{{ iName }}</span>
     <br />
     <ul>
       <li v-for="method in methods" :key="method">{{ method }}</li>
@@ -34,8 +34,6 @@ ul {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: orange;
   padding: 0;
 }
 </style>
-

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    {{ name }} <br />
+    <span class="name">{{ name }}</span>
+    <br />
     <ul>
       <li v-for="iface in implementing" :key="iface">
         {{ iface }}
@@ -35,8 +36,6 @@ ul {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: orange;
   padding: 0;
 }
 </style>
-

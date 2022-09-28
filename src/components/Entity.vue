@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    {{ name }} <br />
+    <span class="name">{{ name }}</span>
+    <br />
     <ul>
       <li v-for="field in fields" :key="field">
         {{ field }}
@@ -39,8 +40,6 @@ ul {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: orange;
   padding: 0;
 }
 </style>
-

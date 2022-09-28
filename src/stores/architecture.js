@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 
 export const useArchStore = defineStore({
   id: "architecture",
   state: () => ({
-    inputAdapters: [
+    inputAdapters: useStorage("inputAdapters", [
       {
         name: "First Controller",
         type: "controller",
@@ -14,39 +15,39 @@ export const useArchStore = defineStore({
         type: "controller",
         calling: ["First Use Case"],
       },
-    ],
-    useCases: [
+    ]),
+    useCases: useStorage("useCases", [
       {
         iName: "First Use Case",
         methods: ["method one", "method two"],
       },
-    ],
-    services: [
+    ]),
+    services: useStorage("services", [
       {
         name: "First Service",
         implementing: ["First Use Case"],
       },
-    ],
-    entities: [
+    ]),
+    entities: useStorage("entities", [
       {
         name: "My Entity",
         fields: ["id", "user"],
         methods: ["public static void main(Object... args);"],
       },
-    ],
-    repositories: [
+    ]),
+    repositories: useStorage("repositories", [
       {
         iName: "First Repository",
         methods: ["test3", "test4"],
       },
-    ],
-    outputAdapters: [
+    ]),
+    outputAdapters: useStorage("outputAdapters", [
       {
         name: "JPA Repository",
         calling: ["First Repository"],
         adapterType: "db",
       },
-    ],
+    ]),
   }),
   getters: {
     getAllUseCaseNames(state) {

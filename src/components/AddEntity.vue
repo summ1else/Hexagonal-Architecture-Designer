@@ -4,18 +4,32 @@
       >Entity Name <input id="newUseCasePortName" v-model="newEntityName"
     /></label>
     <ul>
-      <li v-for="field in newEntityFields" :key="field">
-        {{ field }}
-      </li>
+      <RemovableComponentContainer
+        v-for="(field, idx) in newEntityFields"
+        :key="field"
+        :idx="idx"
+        :remove="removeField"
+      >
+        <li>
+          {{ field }}
+        </li>
+      </RemovableComponentContainer>
     </ul>
     <label for="newEntityField"
       >New Field <input id="newEntityField" v-model="newEntityField"
     /></label>
     <button @click="addField()">Add Field</button>
     <ul>
-      <li v-for="method in newEntityMethods" :key="method">
-        {{ method }}
-      </li>
+      <RemovableComponentContainer
+        v-for="(method, idx) in newEntityMethods"
+        :key="method"
+        :idx="idx"
+        :remove="removeMethod"
+      >
+        <li>
+          {{ method }}
+        </li>
+      </RemovableComponentContainer>
     </ul>
     <label for="newEntityMethod"
       >New Method <input id="newEntityMethod" v-model="newEntityMethod"
@@ -44,6 +58,7 @@ export default {
 
 <script setup>
 import { ref } from "vue";
+import RemovableComponentContainer from "@/components/RemovableComponentContainer.vue";
 // import VueMultiselect from "vue-multiselect";
 const newEntityName = ref("");
 const newEntityFields = ref([]);
@@ -55,11 +70,19 @@ const props = defineProps({
 });
 
 function addMethod() {
-  this.newEntityMethods.push(newEntityMethod.value);
+  newEntityMethods.value.push(newEntityMethod.value);
+}
+
+function removeField(idx) {
+  newEntityFields.value.splice(idx, 1);
+}
+
+function removeMethod(idx) {
+  newEntityMethods.value.splice(idx, 1);
 }
 
 function addField() {
-  this.newEntityFields.push(newEntityField.value);
+  newEntityFields.value.push(newEntityField.value);
 }
 
 console.log(props);

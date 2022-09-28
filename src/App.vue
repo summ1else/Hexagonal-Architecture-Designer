@@ -187,6 +187,10 @@ export default defineComponent({
   justify-content: space-evenly;
 }
 
+span.name {
+  font-size: larger;
+}
+
 .typeContainer > div {
   margin: 10px;
   padding: 10px;
@@ -198,27 +202,27 @@ export default defineComponent({
 }
 
 .inputAdapters > div {
-  background-color: pink;
+  border: 3px solid pink;
 }
 
 .useCases > div {
-  background-color: cornflowerblue;
+  border: 3px solid cornflowerblue;
 }
 
 .services > div {
-  background-color: tan;
+  border: 3px solid tan;
 }
 
 .entities > div {
-  background-color: lightgreen;
+  border: 3px solid lightgreen;
 }
 
 .repositories > div {
-  background-color: lightsalmon;
+  border: 3px solid lightsalmon;
 }
 
 .outputAdapters > div {
-  background-color: lightseagreen;
+  border: 3px solid lightseagreen;
 }
 
 ul {
