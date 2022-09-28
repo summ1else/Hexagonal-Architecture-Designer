@@ -1,5 +1,5 @@
 <template>
-  <button @click="remove(idx)">x</button>
+  <button class="btn btn-danger" @click="remove(idx)">x</button>
   <slot></slot>
 </template>
 
@@ -13,4 +13,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  width: 40%;
+  position: relative;
+  left: 30%;
+}
+</style>

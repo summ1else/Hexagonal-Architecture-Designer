@@ -3,7 +3,7 @@
     <span class="name">{{ name }}</span>
     <br />
     {{ adapterType }}
-    <ul>
+    <ul class="calling">
       <li v-for="iface in calling" :key="iface">
         {{ iface }}
       </li>
@@ -30,17 +30,5 @@ div {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-}
-ul {
-  text-align: left;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 0;
-}
-li {
-  display: inline;
 }
 </style>

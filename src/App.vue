@@ -192,13 +192,15 @@ span.name {
 }
 
 .typeContainer > div {
-  margin: 10px;
+  margin: 5px 0 40px;
   padding: 10px;
+  width: 100%;
 }
 
-.inputAdapters {
+.typeContainer {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .inputAdapters > div {
@@ -226,7 +228,12 @@ span.name {
 }
 
 ul {
+  text-align: left;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 0;
 }
 </style>

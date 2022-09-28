@@ -2,7 +2,7 @@
   <div class="container">
     <span class="name">{{ iName }}</span>
     <br />
-    <ul>
+    <ul class="methods">
       <li v-for="method in methods" :key="method">{{ method }}</li>
     </ul>
   </div>
@@ -26,14 +26,5 @@ div {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-}
-ul {
-  text-align: left;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 0;
 }
 </style>
