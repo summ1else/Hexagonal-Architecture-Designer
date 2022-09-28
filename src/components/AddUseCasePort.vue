@@ -1,9 +1,7 @@
 <template>
   <div id="addUseCasePortDiv">
-    <label for="newUseCasePortName"
-      >Use Case Port Name
-      <input id="newUseCasePortName" v-model="newUseCasePortName"
-    /></label>
+    <label for="newUseCasePortName">Use Case Port Name </label>
+    <input id="newUseCasePortName" v-model="newUseCasePortName" />
     <ul>
       <RemovableComponentContainer
         v-for="(method, idx) in newUseCasePortMethods"
@@ -16,13 +14,12 @@
         </li>
       </RemovableComponentContainer>
     </ul>
-    <label for="newInputAdapterType"
-      >New Method
-      <input id="newInputAdapterType" v-model="newUseCasePortMethod"
-    /></label>
-    <button @click="addMethod()">Add Method</button>
+    <label for="newInputAdapterType">New Method </label>
+    <input id="newInputAdapterType" v-model="newUseCasePortMethod" />
+    <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
     <br />
     <button
+      class="btn btn-primary"
       @click="
         addUseCasePort({
           iName: newUseCasePortName,

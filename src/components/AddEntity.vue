@@ -1,8 +1,7 @@
 <template>
-  <div id="addUseCasePortDiv">
-    <label for="newUseCasePortName"
-      >Entity Name <input id="newUseCasePortName" v-model="newEntityName"
-    /></label>
+  <div id="addEntityDiv">
+    <label for="newEntityName">Entity Name </label>
+    <input id="newEntityName" v-model="newEntityName" />
     <ul>
       <RemovableComponentContainer
         v-for="(field, idx) in newEntityFields"
@@ -15,10 +14,9 @@
         </li>
       </RemovableComponentContainer>
     </ul>
-    <label for="newEntityField"
-      >New Field <input id="newEntityField" v-model="newEntityField"
-    /></label>
-    <button @click="addField()">Add Field</button>
+    <label for="newEntityField">New Field </label>
+    <input id="newEntityField" v-model="newEntityField" />
+    <button class="btn btn-secondary" @click="addField()">Add Field</button>
     <ul>
       <RemovableComponentContainer
         v-for="(method, idx) in newEntityMethods"
@@ -31,12 +29,12 @@
         </li>
       </RemovableComponentContainer>
     </ul>
-    <label for="newEntityMethod"
-      >New Method <input id="newEntityMethod" v-model="newEntityMethod"
-    /></label>
-    <button @click="addMethod()">Add Method</button>
+    <label for="newEntityMethod">New Method </label>
+    <input id="newEntityMethod" v-model="newEntityMethod" />
+    <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
     <br />
     <button
+      class="btn btn-primary"
       @click="
         addEntity({
           name: newEntityName,
@@ -90,7 +88,7 @@ console.log(props);
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
-#addUseCasePortDiv {
+#addEntityDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

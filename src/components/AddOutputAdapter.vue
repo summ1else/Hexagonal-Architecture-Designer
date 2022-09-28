@@ -1,13 +1,9 @@
 <template>
   <div id="addUseCasePortDiv">
-    <label for="newOutputAdapterName"
-      >OutputAdapter Name
-      <input id="newOutputAdapterName" v-model="newOutputAdapterName"
-    /></label>
-    <label for="newOutputAdapterType"
-      >OutputAdapter Type
-      <input id="newOutputAdapterType" v-model="newOutputAdapterType"
-    /></label>
+    <label for="newOutputAdapterName">OutputAdapter Name </label>
+    <input id="newOutputAdapterName" v-model="newOutputAdapterName" />
+    <label for="newOutputAdapterType">OutputAdapter Type </label>
+    <input id="newOutputAdapterType" v-model="newOutputAdapterType" />
     <VueMultiselect
       v-model="newOutputAdapterCalling"
       :multiple="true"
@@ -15,6 +11,7 @@
     >
     </VueMultiselect>
     <button
+      class="btn btn-primary"
       @click="
         addOutputAdapter({
           name: newOutputAdapterName,

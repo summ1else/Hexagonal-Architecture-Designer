@@ -1,13 +1,9 @@
 <template>
-  <div id="addUseCasePortDiv">
-    <label for="newInputAdapterName"
-      >InputAdapter Name
-      <input id="newInputAdapterName" v-model="newInputAdapterName"
-    /></label>
-    <label for="newInputAdapterType"
-      >InputAdapter Type
-      <input id="newInputAdapterType" v-model="newInputAdapterType"
-    /></label>
+  <div id="addInputAdapterDiv">
+    <label for="newInputAdapterName">InputAdapter Name </label>
+    <input id="newInputAdapterName" v-model="newInputAdapterName" />
+    <label for="newInputAdapterType">InputAdapter Type </label>
+    <input id="newInputAdapterType" v-model="newInputAdapterType" />
     <VueMultiselect
       v-model="newInputAdapterCalling"
       :multiple="true"
@@ -15,6 +11,7 @@
     >
     </VueMultiselect>
     <button
+      class="btn btn-primary"
       @click="
         addInputAdapter({
           name: newInputAdapterName,
@@ -51,7 +48,7 @@ console.log(props);
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
-#addUseCasePortDiv {
+#addInputAdapterDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

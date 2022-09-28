@@ -167,12 +167,11 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  //margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-
 #header {
   display: flex;
   flex-direction: row;
@@ -182,9 +181,10 @@ export default defineComponent({
 }
 
 #containers {
+  overflow: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 span.name {
@@ -192,15 +192,13 @@ span.name {
 }
 
 .typeContainer > div {
-  margin: 5px 0 40px;
-  padding: 10px;
+  padding: 15px;
   width: 100%;
 }
 
 .typeContainer {
   display: flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 .inputAdapters > div {

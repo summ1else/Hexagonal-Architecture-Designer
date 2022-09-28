@@ -1,9 +1,7 @@
 <template>
   <div id="addRepositoryDiv">
-    <label for="newRepositoryName"
-      >Repository Name
-      <input id="newRepositoryName" v-model="newRepositoryName"
-    /></label>
+    <label for="newRepositoryName">Repository Name </label>
+    <input id="newRepositoryName" v-model="newRepositoryName" />
     <ul>
       <RemovableComponentContainer
         v-for="(method, idx) in newRepositoryMethods"
@@ -16,12 +14,12 @@
         </li>
       </RemovableComponentContainer>
     </ul>
-    <label for="newInputAdapterType"
-      >New Method <input id="newInputAdapterType" v-model="newRepositoryMethod"
-    /></label>
-    <button @click="addMethod()">Add Method</button>
+    <label for="newInputAdapterType">New Method </label>
+    <input id="newInputAdapterType" v-model="newRepositoryMethod" />
+    <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
     <br />
     <button
+      class="btn btn-primary"
       @click="
         addRepository({
           iName: newRepositoryName,

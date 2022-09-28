@@ -1,9 +1,7 @@
 <template>
   <div id="addUseCasePortDiv">
-    <label for="newInputAdapterName"
-      >InputAdapter Name
-      <input id="newInputAdapterName" v-model="newServiceName"
-    /></label>
+    <label for="newInputAdapterName">InputAdapter Name </label>
+    <input id="newInputAdapterName" v-model="newServiceName" />
     <VueMultiselect
       v-model="newServiceImplementing"
       :multiple="true"
@@ -12,6 +10,7 @@
       <!-- TODO implement a computed property instead -->
     </VueMultiselect>
     <button
+      class="btn btn-primary"
       @click="
         addService({
           name: newServiceName,

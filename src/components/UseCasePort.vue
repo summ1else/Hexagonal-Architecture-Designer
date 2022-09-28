@@ -28,4 +28,7 @@ div {
   justify-content: flex-start;
   align-items: flex-start;
 }
+.methods {
+  font-family: "Courier New";
+}
 </style>

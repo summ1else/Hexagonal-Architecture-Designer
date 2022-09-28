@@ -35,4 +35,8 @@ div {
   justify-content: flex-start;
   align-items: flex-start;
 }
+.fields,
+.methods {
+  font-family: "Courier New";
+}
 </style>
