@@ -3,16 +3,15 @@
     <label for="newEntityName">Entity Name </label>
     <input id="newEntityName" v-model="newEntityName" />
     <ul>
-      <RemovableComponentContainer
-        v-for="(field, idx) in newEntityFields"
-        :key="field"
-        :idx="idx"
-        :remove="removeField"
-      >
-        <li>
-          {{ field }}
-        </li>
-      </RemovableComponentContainer>
+      <li v-for="(field, idx) in newEntityFields" :key="field">
+        {{ field }}
+        <RemovableComponentContainer
+          :idx="idx"
+          :remove="removeField"
+          :inline="true"
+        >
+        </RemovableComponentContainer>
+      </li>
     </ul>
     <label for="newEntityField">New Field </label>
     <input id="newEntityField" v-model="newEntityField" />
