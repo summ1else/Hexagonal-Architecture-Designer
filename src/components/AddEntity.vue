@@ -42,7 +42,7 @@
         })
       "
     >
-      Add Use Case Port
+      Add Entity
     </button>
   </div>
 </template>

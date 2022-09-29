@@ -184,7 +184,7 @@ export default defineComponent({
   overflow: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 span.name {
@@ -194,6 +194,7 @@ span.name {
 .typeContainer > div {
   padding: 15px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .typeContainer {

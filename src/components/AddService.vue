@@ -1,6 +1,6 @@
 <template>
   <div id="addUseCasePortDiv">
-    <label for="newInputAdapterName">InputAdapter Name </label>
+    <label for="newInputAdapterName">Service Name </label>
     <input id="newInputAdapterName" v-model="newServiceName" />
     <VueMultiselect
       v-model="newServiceImplementing"
@@ -18,7 +18,7 @@
         })
       "
     >
-      Add Input Adapter
+      Add Service
     </button>
   </div>
 </template>
