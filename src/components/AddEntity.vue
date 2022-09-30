@@ -4,17 +4,21 @@
     <input id="newEntityName" v-model="newEntityName" />
     <ul>
       <li v-for="(field, idx) in newEntityFields" :key="field">
-        {{ field }}
         <RemovableComponentContainer
           :idx="idx"
           :remove="removeField"
           :inline="true"
         >
         </RemovableComponentContainer>
+        {{ field }}
       </li>
     </ul>
     <label for="newEntityField">New Field </label>
-    <input id="newEntityField" v-model="newEntityField" />
+    <input
+      @keyup.enter="addField()"
+      id="newEntityField"
+      v-model="newEntityField"
+    />
     <button class="btn btn-secondary" @click="addField()">Add Field</button>
     <ul>
       <RemovableComponentContainer
@@ -29,7 +33,11 @@
       </RemovableComponentContainer>
     </ul>
     <label for="newEntityMethod">New Method </label>
-    <input id="newEntityMethod" v-model="newEntityMethod" />
+    <input
+      @keyup.enter="addMethod()"
+      id="newEntityMethod"
+      v-model="newEntityMethod"
+    />
     <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
     <br />
     <button
@@ -68,6 +76,7 @@ const props = defineProps({
 
 function addMethod() {
   newEntityMethods.value.push(newEntityMethod.value);
+  newEntityMethod.value = "";
 }
 
 function removeField(idx) {
@@ -80,6 +89,7 @@ function removeMethod(idx) {
 
 function addField() {
   newEntityFields.value.push(newEntityField.value);
+  newEntityField.value = "";
 }
 
 console.log(props);

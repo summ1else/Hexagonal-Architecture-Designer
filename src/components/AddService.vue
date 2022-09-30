@@ -5,7 +5,7 @@
     <VueMultiselect
       v-model="newServiceImplementing"
       :multiple="true"
-      :options="useCaseNames.concat(repositoryNames)"
+      :options="useCaseNames"
     >
       <!-- TODO implement a computed property instead -->
     </VueMultiselect>
@@ -38,7 +38,6 @@ const newServiceImplementing = ref([]);
 const props = defineProps({
   addService: Function,
   useCaseNames: Array,
-  repositoryNames: Array,
 });
 console.log(props);
 </script>

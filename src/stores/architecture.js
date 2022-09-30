@@ -70,7 +70,7 @@ export const useArchStore = defineStore({
     },
     getImplementedUseCases(state) {
       if (state.services.length === 0) {
-        return this.getAllUseCaseNames;
+        return [];
       }
       return this.getAllUseCaseNames.filter(
         (useCase) =>

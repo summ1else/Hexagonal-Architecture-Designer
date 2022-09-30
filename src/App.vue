@@ -7,10 +7,8 @@
         :add-input-adapter="architecture.addInputAdapter"
       />
       <ul>
-        <li>Uncalled UseCases</li>
-        <li v-show="architecture.getUnimplementedUseCases.length === 0">
-          None
-        </li>
+        <li class="h5">Uncalled UseCases</li>
+        <li v-show="architecture.getUncalledUseCases.length === 0">None</li>
         <li v-for="useCase in architecture.getUncalledUseCases" :key="useCase">
           {{ useCase }}
         </li>
@@ -42,11 +40,10 @@
     <div class="services typeContainer">
       <AddService
         :add-service="architecture.addService"
-        :repository-names="architecture.getAllRepositoryNames"
         :use-case-names="architecture.getAllUseCaseNames"
       />
       <ul>
-        <li>Unimplemented UseCases</li>
+        <li class="h5">Unimplemented UseCases</li>
         <li v-show="architecture.getUnimplementedUseCases.length === 0">
           None
         </li>
