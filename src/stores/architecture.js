@@ -108,8 +108,9 @@ export const useArchStore = defineStore({
     },
   },
   actions: {
-    addInputAdapter({ name, type, calling }) {
+    addInputAdapter({ pack, name, type, calling }) {
       this.inputAdapters.push({
+        pack,
         name,
         type,
         calling,
@@ -158,6 +159,9 @@ export const useArchStore = defineStore({
     },
     removeOutputAdapter(idx) {
       this.outputAdapters.splice(idx, 1);
+    },
+    getUseCaseByName(name) {
+      return this.useCases.filter((useCase) => useCase.iName === name)[0];
     },
   },
 });

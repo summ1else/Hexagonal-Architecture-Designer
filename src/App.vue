@@ -19,11 +19,7 @@
         :idx="idx"
         :key="inputAdapter.name"
       >
-        <InputAdapter
-          :calling="inputAdapter.calling"
-          :name="inputAdapter.name"
-          :adapterType="inputAdapter.type"
-        ></InputAdapter>
+        <InputAdapter v-bind="inputAdapter"></InputAdapter>
       </RemovableComponentContainer>
     </div>
     <div class="useCases typeContainer">
@@ -34,7 +30,7 @@
         :idx="idx"
         :key="useCase.iName"
       >
-        <UseCasePort :methods="useCase.methods" :iName="useCase.iName" />
+        <UseCasePort v-bind="useCase" />
       </RemovableComponentContainer>
     </div>
     <div class="services typeContainer">
@@ -60,7 +56,7 @@
         :idx="idx"
         :key="service.name"
       >
-        <Service :implementing="service.implementing" :name="service.name" />
+        <Service v-bind="service" />
       </RemovableComponentContainer>
     </div>
     <div class="entities typeContainer">
@@ -71,11 +67,7 @@
         :idx="idx"
         :key="entity.name"
       >
-        <Entity
-          :name="entity.name"
-          :fields="entity.fields"
-          :methods="entity.methods"
-        />
+        <Entity v-bind="entity" />
       </RemovableComponentContainer>
     </div>
     <div class="repositories typeContainer">
@@ -86,10 +78,7 @@
         :idx="idx"
         :key="repository.iName"
       >
-        <RepositoryPort
-          :methods="repository.methods"
-          :iName="repository.iName"
-        />
+        <RepositoryPort v-bind="repository" />
       </RemovableComponentContainer>
     </div>
     <div class="outputAdapters typeContainer">
@@ -103,11 +92,7 @@
         :idx="idx"
         :key="outputAdapter.name"
       >
-        <OutputAdapter
-          :calling="outputAdapter.calling"
-          :name="outputAdapter.name"
-          :adapter-type="outputAdapter.adapterType"
-        />
+        <OutputAdapter v-bind="outputAdapter" />
       </RemovableComponentContainer>
     </div>
   </div>

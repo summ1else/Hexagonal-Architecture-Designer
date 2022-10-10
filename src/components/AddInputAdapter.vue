@@ -1,5 +1,7 @@
 <template>
   <div id="addInputAdapterDiv">
+    <label for="newInputAdapterPack">Package</label>
+    <input id="newInputAdapterPack" v-model="newInputAdapterPack" />
     <label for="newInputAdapterName">InputAdapter Name </label>
     <input id="newInputAdapterName" v-model="newInputAdapterName" />
     <label for="newInputAdapterType">InputAdapter Type </label>
@@ -14,6 +16,7 @@
       class="btn btn-primary"
       @click="
         addInputAdapter({
+          pack: newInputAdapterPack,
           name: newInputAdapterName,
           type: newInputAdapterType,
           calling: newInputAdapterCalling,
@@ -34,7 +37,7 @@ export default {
 <script setup>
 import { ref } from "vue";
 import VueMultiselect from "vue-multiselect";
-
+const newInputAdapterPack = ref("");
 const newInputAdapterName = ref("");
 const newInputAdapterType = ref("");
 const newInputAdapterCalling = ref([]);
