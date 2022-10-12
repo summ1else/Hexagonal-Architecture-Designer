@@ -24,13 +24,13 @@
       <button
         class="btn btn-primary"
         @click="
-        addInputAdapter({
-          pack: newInputAdapterPack,
-          name: newInputAdapterName,
-          type: newInputAdapterType,
-          calling: newInputAdapterCalling,
-        })
-      "
+          addInputAdapter({
+            pack: newInputAdapterPack,
+            name: newInputAdapterName,
+            type: newInputAdapterType,
+            calling: newInputAdapterCalling,
+          })
+        "
       >
         Add Input Adapter
       </button>
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: "AddInputAdapter"
+  name: "AddInputAdapter",
 };
 </script>
 
@@ -54,7 +54,7 @@ const newInputAdapterCalling = ref([]);
 
 const props = defineProps({
   addInputAdapter: Function,
-  inputAdapterNames: Array
+  inputAdapterNames: Array,
 });
 console.log(props);
 </script>
