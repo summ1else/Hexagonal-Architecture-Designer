@@ -1,20 +1,29 @@
 <template>
   <div id="addInputAdapterDiv">
-    <label for="newInputAdapterPack">Package</label>
-    <input id="newInputAdapterPack" v-model="newInputAdapterPack" />
-    <label for="newInputAdapterName">InputAdapter Name </label>
-    <input id="newInputAdapterName" v-model="newInputAdapterName" />
-    <label for="newInputAdapterType">InputAdapter Type </label>
-    <input id="newInputAdapterType" v-model="newInputAdapterType" />
-    <VueMultiselect
-      v-model="newInputAdapterCalling"
-      :multiple="true"
-      :options="inputAdapterNames"
-    >
-    </VueMultiselect>
-    <button
-      class="btn btn-primary"
-      @click="
+    <div>
+      <label for="newInputAdapterPack">Package</label>
+      <input id="newInputAdapterPack" v-model="newInputAdapterPack" />
+    </div>
+    <div>
+      <label for="newInputAdapterName">InputAdapter Name </label>
+      <input id="newInputAdapterName" v-model="newInputAdapterName" />
+    </div>
+    <div>
+      <label for="newInputAdapterType">InputAdapter Type </label>
+      <input id="newInputAdapterType" v-model="newInputAdapterType" />
+    </div>
+    <div>
+      <VueMultiselect
+        v-model="newInputAdapterCalling"
+        :multiple="true"
+        :options="inputAdapterNames"
+      >
+      </VueMultiselect>
+    </div>
+    <div>
+      <button
+        class="btn btn-primary"
+        @click="
         addInputAdapter({
           pack: newInputAdapterPack,
           name: newInputAdapterName,
@@ -22,15 +31,16 @@
           calling: newInputAdapterCalling,
         })
       "
-    >
-      Add Input Adapter
-    </button>
+      >
+        Add Input Adapter
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "AddInputAdapter",
+  name: "AddInputAdapter"
 };
 </script>
 
@@ -41,10 +51,10 @@ const newInputAdapterPack = ref("");
 const newInputAdapterName = ref("");
 const newInputAdapterType = ref("");
 const newInputAdapterCalling = ref([]);
-// const inputAdapterNames = ref(["list", "of", "options"]);
+
 const props = defineProps({
   addInputAdapter: Function,
-  inputAdapterNames: Array,
+  inputAdapterNames: Array
 });
 console.log(props);
 </script>
@@ -53,13 +63,17 @@ console.log(props);
 <style scoped>
 #addInputAdapterDiv {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-label {
-  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  width: 100%;
+}
+#addInputAdapterDiv > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+div.multiselect {
+  min-width: 400px;
 }
 </style>

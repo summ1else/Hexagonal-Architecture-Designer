@@ -4,6 +4,7 @@ import { useStorage } from "@vueuse/core";
 export const useArchStore = defineStore({
   id: "architecture",
   state: () => ({
+    inputDisplay: useStorage("inputDisplay", ""),
     inputAdapters: useStorage("inputAdapters", [
       {
         name: "First Controller",
@@ -106,6 +107,24 @@ export const useArchStore = defineStore({
       console.log("uncalled", uncalledUseCases);
       return uncalledUseCases;
     },
+    getColor() {
+      switch (this.inputDisplay) {
+        case "addInputAdapter":
+          return "pink";
+        case "addUseCasePort":
+          return "cornflowerblue";
+        case "addService":
+          return "tan";
+        case "addEntity":
+          return "lightgreen";
+        case "addRepository":
+          return "lightsalmon";
+        case "addOutputAdapter":
+          return "lightseagreen";
+        default:
+          return "white";
+      }
+    },
   },
   actions: {
     addInputAdapter({ pack, name, type, calling }) {
@@ -162,6 +181,9 @@ export const useArchStore = defineStore({
     },
     getUseCaseByName(name) {
       return this.useCases.filter((useCase) => useCase.iName === name)[0];
+    },
+    setInputDisplay(input) {
+      this.inputDisplay = input;
     },
   },
 });

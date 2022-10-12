@@ -21,16 +21,16 @@
     />
     <button class="btn btn-secondary" @click="addField()">Add Field</button>
     <ul>
-      <RemovableComponentContainer
-        v-for="(method, idx) in newEntityMethods"
-        :key="method"
-        :idx="idx"
-        :remove="removeMethod"
-      >
-        <li>
-          {{ method }}
-        </li>
-      </RemovableComponentContainer>
+      <li v-for="(method, idx) in newEntityMethods">
+        <RemovableComponentContainer
+          :key="method"
+          :idx="idx"
+          :remove="removeMethod"
+          :inline="true"
+        >
+        </RemovableComponentContainer>
+        {{ method }}
+      </li>
     </ul>
     <label for="newEntityMethod">New Method </label>
     <input

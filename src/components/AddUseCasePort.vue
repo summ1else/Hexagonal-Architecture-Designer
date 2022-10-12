@@ -1,34 +1,47 @@
 <template>
   <div id="addUseCasePortDiv">
-    <label for="newUseCasePortName">Use Case Port Name </label>
-    <input id="newUseCasePortName" v-model="newUseCasePortName" />
-    <ul>
-      <RemovableComponentContainer
-        v-for="(method, idx) in newUseCasePortMethods"
-        :key="method"
-        :remove="removeMethod"
-        :idx="idx"
+    <div class="editor">
+      <div>
+        <label for="newUseCasePortName">Use Case Port Name </label>
+        <input id="newUseCasePortName" v-model="newUseCasePortName" />
+      </div>
+      <div>
+        <ul>
+          <li v-for="(method, idx) in newUseCasePortMethods">
+            <RemovableComponentContainer
+              :key="method"
+              :remove="removeMethod"
+              :idx="idx"
+              :inline="true"
+            >
+            </RemovableComponentContainer>
+            {{ method }}
+          </li>
+        </ul>
+      </div>
+      <div class="adderField">
+        <label for="newInputAdapterType">New Method </label>
+        <input id="newInputAdapterType" v-model="newUseCasePortMethod" />
+        <button class="btn btn-secondary" @click="addMethod()">
+          Add Method
+        </button>
+      </div>
+      <br />
+      <button
+        class="btn btn-primary"
+        @click="
+          addUseCasePort({
+            iName: newUseCasePortName,
+            methods: newUseCasePortMethods,
+          })
+        "
       >
-        <li>
-          {{ method }}
-        </li>
-      </RemovableComponentContainer>
-    </ul>
-    <label for="newInputAdapterType">New Method </label>
-    <input id="newInputAdapterType" v-model="newUseCasePortMethod" />
-    <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
-    <br />
-    <button
-      class="btn btn-primary"
-      @click="
-        addUseCasePort({
-          iName: newUseCasePortName,
-          methods: newUseCasePortMethods,
-        })
-      "
-    >
-      Add Use Case Port
-    </button>
+        Add Use Case Port
+      </button>
+    </div>
+    <div class="display">
+      <span class="h4">{{ newUseCasePortName }}</span>
+    </div>
   </div>
 </template>
 
@@ -64,13 +77,44 @@ console.log(props);
 <style scoped>
 #addUseCasePortDiv {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-label {
-  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+}
+
+div.editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30%;
+  align-items: flex-start;
+}
+
+div.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 65%;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.editor > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.adderField {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.adderField > button {
+  margin-top: 5px;
 }
 </style>

@@ -1,11 +1,38 @@
 <template>
-  <div id="header"></div>
+  <div id="header" :style="{ backgroundColor: architecture.getColor }">
+    <AddInputAdapter
+      v-show="architecture.inputDisplay === 'addInputAdapter'"
+      :input-adapter-names="architecture.getAllUseCaseNames"
+      :add-input-adapter="architecture.addInputAdapter"
+    />
+    <AddUseCasePort
+      v-show="architecture.inputDisplay === 'addUseCasePort'"
+      :add-use-case-port="architecture.addUseCasePort"
+    />
+    <AddService
+      v-show="architecture.inputDisplay === 'addService'"
+      :add-service="architecture.addService"
+      :use-case-names="architecture.getAllUseCaseNames"
+    />
+    <AddEntity
+      v-show="architecture.inputDisplay === 'addEntity'"
+      :add-entity="architecture.addEntity"
+    />
+    <AddRepository
+      v-show="architecture.inputDisplay === 'addRepository'"
+      :add-repository="architecture.addRepository"
+    />
+    <AddOutputAdapter
+      v-show="architecture.inputDisplay === 'addOutputAdapter'"
+      :add-output-adapter="architecture.addOutputAdapter"
+      :repository-names="architecture.getAllRepositoryNames"
+    />
+  </div>
   <div id="containers">
     <div class="inputAdapters typeContainer">
-      <AddInputAdapter
-        :input-adapter-names="architecture.getAllUseCaseNames"
-        :add-input-adapter="architecture.addInputAdapter"
-      />
+      <button @click="architecture.setInputDisplay('addInputAdapter')">
+        Add
+      </button>
       <ul>
         <li class="h5">Uncalled UseCases</li>
         <li v-show="architecture.getUncalledUseCases.length === 0">None</li>
@@ -23,7 +50,9 @@
       </RemovableComponentContainer>
     </div>
     <div class="useCases typeContainer">
-      <AddUseCasePort :add-use-case-port="architecture.addUseCasePort" />
+      <button @click="architecture.setInputDisplay('addUseCasePort')">
+        Add
+      </button>
       <RemovableComponentContainer
         v-for="(useCase, idx) in architecture.useCases"
         :remove="architecture.removeUseCase"
@@ -34,10 +63,7 @@
       </RemovableComponentContainer>
     </div>
     <div class="services typeContainer">
-      <AddService
-        :add-service="architecture.addService"
-        :use-case-names="architecture.getAllUseCaseNames"
-      />
+      <button @click="architecture.setInputDisplay('addService')">Add</button>
       <ul>
         <li class="h5">Unimplemented UseCases</li>
         <li v-show="architecture.getUnimplementedUseCases.length === 0">
@@ -60,7 +86,7 @@
       </RemovableComponentContainer>
     </div>
     <div class="entities typeContainer">
-      <AddEntity :add-entity="architecture.addEntity" />
+      <button @click="architecture.setInputDisplay('addEntity')">Add</button>
       <RemovableComponentContainer
         v-for="(entity, idx) in architecture.entities"
         :remove="architecture.removeEntity"
@@ -71,7 +97,9 @@
       </RemovableComponentContainer>
     </div>
     <div class="repositories typeContainer">
-      <AddRepository :add-repository="architecture.addRepository" />
+      <button @click="architecture.setInputDisplay('addRepository')">
+        Add
+      </button>
       <RemovableComponentContainer
         v-for="(repository, idx) in architecture.repositories"
         :remove="architecture.removeRepository"
@@ -82,10 +110,9 @@
       </RemovableComponentContainer>
     </div>
     <div class="outputAdapters typeContainer">
-      <AddOutputAdapter
-        :add-output-adapter="architecture.addOutputAdapter"
-        :repository-names="architecture.getAllRepositoryNames"
-      />
+      <button @click="architecture.setInputDisplay('addOutputAdapter')">
+        Add
+      </button>
       <RemovableComponentContainer
         v-for="(outputAdapter, idx) in architecture.outputAdapters"
         :remove="architecture.removeOutputAdapter"
@@ -112,7 +139,7 @@ import ServiceVue from "./components/Service.vue";
 import EntityVue from "./components/Entity.vue";
 import { useArchStore } from "./stores/architecture";
 import RemovableComponentContainer from "./components/RemovableComponentContainer.vue";
-import AddRepositoryVue from "./components/AddRepository.vue";
+import AddRepositoryVue from "./components/AddSecondaryPort.vue";
 import AddOutputAdapterVue from "./components/AddOutputAdapter.vue";
 
 export default defineComponent({
@@ -157,9 +184,10 @@ export default defineComponent({
 #header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  height: 10em;
+  justify-content: flex-start;
   background-color: antiquewhite;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 #containers {
