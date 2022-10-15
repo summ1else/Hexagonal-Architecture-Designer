@@ -9,7 +9,7 @@
         {{ iface }}
       </li>
     </ul>
-    <button @click="generateCode">log code</button>
+    <CodeDisplay :generated-code="generatedCode" />
   </div>
 </template>
 
@@ -19,27 +19,39 @@ export default {
 };
 </script>
 <script setup>
+import { computed } from "vue";
+import { useArchStore } from "@/stores/architecture";
+import CodeDisplay from "@/components/CodeDisplay.vue";
+const archStore = useArchStore();
+
 const props = defineProps({
   pack: String,
   name: String,
   calling: Array,
   adapterType: String,
 });
-import { useArchStore } from "@/stores/architecture";
-const archStore = useArchStore();
-const generateCode = function () {
+const generatedCode = computed(() => {
   const methods = props.calling
     .flatMap((name) => archStore.getUseCaseByName(name).methods)
-    .join("\r\n\r\n");
-  const code = `
+    .map((method) => {
+      method = method.trim();
+      if (method.indexOf(";") === method.length - 1) {
+        method = method.substring(0, method.length - 1);
+        console.log("Found", method);
+      }
+      return method;
+    })
+    .join(" {\r\n\r\n  }\r\n\r\n  ")
+    .concat(" {\r\n\r\n  }");
+  return `
 package ${props.pack}
 
-public class ${props.name}
+public class ${props.name} {
 
-${methods}
-`;
-  console.log(code);
-};
+  ${methods}
+
+}`;
+});
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

@@ -6,17 +6,39 @@
         {{ method }}
       </li>
     </ul>
+    <CodeDisplay :generated-code="generatedCode" />
   </div>
 </template>
 
 <script>
 export default {
   name: "UseCasePort",
-  props: {
-    iName: String,
-    methods: Array,
-  },
 };
+</script>
+<script setup>
+import { computed } from "vue";
+import CodeDisplay from "@/components/CodeDisplay.vue";
+
+const props = defineProps({
+  iName: String,
+  methods: Array,
+});
+const generatedCode = computed(() => {
+  const methods = props.methods
+    .map((method) => {
+      method = method.trim();
+      return method;
+    })
+    .join("\r\n\r\n  ");
+  return `
+package ${props.pack}
+
+public interface ${props.iName} {
+
+  ${methods}
+
+}`;
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
