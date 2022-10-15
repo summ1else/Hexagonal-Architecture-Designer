@@ -7,17 +7,46 @@
         {{ iface }}
       </li>
     </ul>
+    <CodeDisplay :generated-code="generatedCode" />
   </div>
 </template>
 
 <script>
 export default {
   name: "Service",
-  props: {
-    name: String,
-    implementing: Array,
-  },
 };
+</script>
+<script setup>
+import { computed } from "vue";
+import { useArchStore } from "@/stores/architecture";
+import CodeDisplay from "@/components/CodeDisplay.vue";
+const archStore = useArchStore();
+const props = defineProps({
+  name: String,
+  implementing: Array,
+});
+const generatedCode = computed(() => {
+  const methods = props.implementing
+    .flatMap((name) => archStore.getUseCaseByName(name).methods)
+    .map((method) => {
+      method = method.trim();
+      if (method.indexOf(";") === method.length - 1) {
+        method = method.substring(0, method.length - 1);
+        console.log("Found", method);
+      }
+      return method;
+    })
+    .join(" {\r\n\r\n  }\r\n\r\n  ")
+    .concat(" {\r\n\r\n  }");
+  return `
+package ${props.pack}
+
+public class ${props.name} implements ${props.implementing.join(", ")} {
+
+  ${methods}
+
+}`;
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
