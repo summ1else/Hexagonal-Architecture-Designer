@@ -1,10 +1,6 @@
 <template>
   <div id="addUseCasePortDiv">
-    <div class="editor">
-      <div>
-        <label for="newUseCasePortName">Use Case Port Name </label>
-        <input id="newUseCasePortName" v-model="newUseCasePortName" />
-      </div>
+    <div>
       <div>
         <ul>
           <li v-for="(method, idx) in newUseCasePortMethods">
@@ -18,6 +14,10 @@
             {{ method }}
           </li>
         </ul>
+      </div>
+      <div>
+        <label for="newUseCasePortName">Use Case Port Name </label>
+        <input id="newUseCasePortName" v-model="newUseCasePortName" />
       </div>
       <div class="adderField">
         <label for="newInputAdapterType">New Method </label>
@@ -38,9 +38,6 @@
       >
         Add Use Case Port
       </button>
-    </div>
-    <div class="display">
-      <span class="h4">{{ newUseCasePortName }}</span>
     </div>
   </div>
 </template>
@@ -83,7 +80,7 @@ console.log(props);
   align-items: center;
 }
 
-div.editor {
+#addUseCasePortDiv > div {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

@@ -1,29 +1,30 @@
 <template>
   <div id="addInputAdapterDiv">
     <div>
-      <label for="newInputAdapterPack">Package</label>
-      <input id="newInputAdapterPack" v-model="newInputAdapterPack" />
+      <label for="newInputAdapterPack">Package</label><br />
+      <input id="newInputAdapterPack" v-model="newInputAdapterPack"/>
     </div>
     <div>
-      <label for="newInputAdapterName">InputAdapter Name </label>
-      <input id="newInputAdapterName" v-model="newInputAdapterName" />
+      <label for="newInputAdapterName">InputAdapter Name </label><br />
+      <input id="newInputAdapterName" v-model="newInputAdapterName"/>
     </div>
     <div>
-      <label for="newInputAdapterType">InputAdapter Type </label>
-      <input id="newInputAdapterType" v-model="newInputAdapterType" />
+      <label for="newInputAdapterType">InputAdapter Type </label><br />
+      <input id="newInputAdapterType" v-model="newInputAdapterType"/>
     </div>
     <div>
       <VueMultiselect
-        v-model="newInputAdapterCalling"
-        :multiple="true"
-        :options="inputAdapterNames"
+          class="multiselect"
+          v-model="newInputAdapterCalling"
+          :multiple="true"
+          :options="inputAdapterNames"
       >
       </VueMultiselect>
     </div>
     <div>
       <button
-        class="btn btn-primary"
-        @click="
+          class="btn btn-primary"
+          @click="
           addInputAdapter({
             pack: newInputAdapterPack,
             name: newInputAdapterName,
@@ -45,8 +46,9 @@ export default {
 </script>
 
 <script setup>
-import { ref } from "vue";
+import {ref} from "vue";
 import VueMultiselect from "vue-multiselect";
+
 const newInputAdapterPack = ref("");
 const newInputAdapterName = ref("");
 const newInputAdapterType = ref("");
@@ -63,17 +65,19 @@ console.log(props);
 <style scoped>
 #addInputAdapterDiv {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
 }
+
 #addInputAdapterDiv > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  padding: 10px;
 }
-div.multiselect {
-  min-width: 400px;
+
+.multiselect {
+  width: 100%;
 }
 </style>
