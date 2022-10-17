@@ -1,6 +1,5 @@
 <template>
-  <div id="header">
-  </div>
+  <h1>Menu</h1>
 </template>
 
 <script>
@@ -13,12 +12,5 @@ export default {
 </script>
 
 <style scoped>
-#header {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  background-color: antiquewhite;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+
 </style>

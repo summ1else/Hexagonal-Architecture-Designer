@@ -1,5 +1,7 @@
 <template>
+  <div id="header">
   <MenuHeader/>
+  </div>
   <div id="belowFold">
     <div id="sideBar" :style="{ backgroundColor: architecture.getColor }">
       <SideBar />
@@ -145,10 +147,15 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: antiquewhite;
 }
 
 #belowFold {
