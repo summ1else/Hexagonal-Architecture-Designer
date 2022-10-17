@@ -23,7 +23,7 @@ const props = defineProps({
   generatedCode: Function,
 });
 
-const shouldShowCode = ref(true);
+const shouldShowCode = ref(false);
 
 const displayCode = () => {
   shouldShowCode.value = !shouldShowCode.value;

@@ -141,6 +141,9 @@ export default defineComponent({
 </script>
 
 <style>
+html, body {
+  height: 100%;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -150,6 +153,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  height: 100%;
 }
 #header {
   display: flex;
@@ -162,13 +166,17 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  height: 100%;
 }
 
 #sideBar {
   flex: 1;
+  height: 100%;
+
 }
 
 #containers {;
+  flex: 10;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
