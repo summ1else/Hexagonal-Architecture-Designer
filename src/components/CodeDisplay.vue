@@ -7,7 +7,6 @@
     v-model:value="code"
     :options="cmOptions"
   />
-  <!--  <div class="code" v-show="shouldShowCode">{{ props.generatedCode }}</div>-->
 </template>
 <script>
 export default {
@@ -15,7 +14,7 @@ export default {
 };
 </script>
 <script setup>
-import { ref } from "vue";
+import { ref, toRef } from "vue";
 import Codemirror from "codemirror-editor-vue3";
 import "codemirror/mode/clike/clike.js";
 import "codemirror/theme/dracula.css";
@@ -30,7 +29,7 @@ const displayCode = () => {
   shouldShowCode.value = !shouldShowCode.value;
 };
 
-const code = props.generatedCode;
+const code = toRef(props, "generatedCode");
 const cmOptions = {
   mode: "text/x-java",
   theme: "dracula",
@@ -42,9 +41,4 @@ const cmOptions = {
   styleActiveLine: true,
 };
 </script>
-<style>
-.code {
-  font-family: monospace;
-  white-space: pre;
-}
-</style>
+<style></style>
