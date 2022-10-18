@@ -6,7 +6,7 @@
   />
   <AddInputPort
     v-show="architecture.inputDisplay === 'addInputPort'"
-    :add-use-case-port="architecture.addInputPort"
+    :add-input-port="architecture.addInputPort"
   />
   <AddService
     v-show="architecture.inputDisplay === 'addService'"

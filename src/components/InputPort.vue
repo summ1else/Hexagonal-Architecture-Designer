@@ -20,6 +20,7 @@ import { computed } from "vue";
 import CodeDisplay from "@/components/CodeDisplay.vue";
 
 const props = defineProps({
+  pack: String,
   iName: String,
   methods: Array,
 });

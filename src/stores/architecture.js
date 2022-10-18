@@ -135,8 +135,9 @@ export const useArchStore = defineStore({
         calling,
       });
     },
-    addInputPort({ iName, methods }) {
+    addInputPort({ pack, iName, methods }) {
       this.inputPorts.push({
+        pack,
         iName,
         methods,
       });

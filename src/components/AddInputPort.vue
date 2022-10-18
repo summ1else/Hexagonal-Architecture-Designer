@@ -1,11 +1,11 @@
 <template>
   <div id="addInputPortDiv">
-    <!--    <div>-->
-    <!--      <label for="newInputAdapterPack">Package</label><br />-->
-    <!--      <input id="newInputAdapterPack" v-model="newInputAdapterPack" />-->
-    <!--    </div>-->
     <div>
-      <label for="newInputPortName">Use Case Port Name </label>
+      <label for="newInputAdapterPack">Package</label><br />
+      <input id="newInputAdapterPack" v-model="newInputPortPack" />
+    </div>
+    <div>
+      <label for="newInputPortName">Use Input Port Name </label>
       <input id="newInputPortName" v-model="newInputPortName" />
     </div>
     <div class="adderField">
@@ -31,12 +31,13 @@
         class="btn btn-primary"
         @click="
           addInputPort({
+            pack: newInputPortPack,
             iName: newInputPortName,
             methods: newInputPortMethods,
           })
         "
       >
-        Add Use Case Port
+        Add Input Port
       </button>
     </div>
   </div>
@@ -52,6 +53,7 @@ export default {
 import { ref } from "vue";
 import RemovableComponentContainer from "@/components/RemovableComponentContainer.vue";
 // import VueMultiselect from "vue-multiselect";
+const newInputPortPack = ref("");
 const newInputPortName = ref("");
 const newInputPortMethods = ref([]);
 const newInputPortMethod = ref("");
