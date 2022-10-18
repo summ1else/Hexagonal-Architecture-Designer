@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span>Package: {{ pack }}</span>
     <span class="name">{{ iName }}</span>
     <ul class="methods">
       <li v-for="method in methods" :key="method">

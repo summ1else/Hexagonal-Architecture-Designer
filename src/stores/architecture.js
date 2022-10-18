@@ -142,8 +142,9 @@ export const useArchStore = defineStore({
         methods,
       });
     },
-    addEntity({ name, fields, methods }) {
+    addEntity({ pack, name, fields, methods }) {
       this.entities.push({
+        pack,
         name,
         fields,
         methods,

@@ -1,57 +1,77 @@
 <template>
   <div id="addEntityDiv">
-    <label for="newEntityName">Entity Name </label>
-    <input id="newEntityName" v-model="newEntityName" />
-    <ul>
-      <li v-for="(field, idx) in newEntityFields" :key="field">
-        <RemovableComponentContainer
-          :idx="idx"
-          :remove="removeField"
-          :inline="true"
-        >
-        </RemovableComponentContainer>
-        {{ field }}
-      </li>
-    </ul>
-    <label for="newEntityField">New Field </label>
-    <input
-      @keyup.enter="addField()"
-      id="newEntityField"
-      v-model="newEntityField"
-    />
-    <button class="btn btn-secondary" @click="addField()">Add Field</button>
-    <ul>
-      <li v-for="(method, idx) in newEntityMethods">
-        <RemovableComponentContainer
-          :key="method"
-          :idx="idx"
-          :remove="removeMethod"
-          :inline="true"
-        >
-        </RemovableComponentContainer>
-        {{ method }}
-      </li>
-    </ul>
-    <label for="newEntityMethod">New Method </label>
-    <input
-      @keyup.enter="addMethod()"
-      id="newEntityMethod"
-      v-model="newEntityMethod"
-    />
-    <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
-    <br />
-    <button
-      class="btn btn-primary"
-      @click="
-        addEntity({
-          name: newEntityName,
-          fields: newEntityFields,
-          methods: newEntityMethods,
-        })
-      "
-    >
-      Add Entity
-    </button>
+    <div>
+      <label for="newEntityPack">Package</label>
+      <input id="newEntityPack" v-model="newEntityPack" />
+    </div>
+    <div>
+      <label for="newEntityName">Entity Name </label>
+      <input id="newEntityName" v-model="newEntityName" />
+    </div>
+    <div>
+      <label for="newEntityField">New Field </label>
+      <input
+        @keyup.enter="addField()"
+        id="newEntityField"
+        v-model="newEntityField"
+      />
+    </div>
+    <div>
+      <button class="btn btn-secondary" @click="addField()">Add Field</button>
+    </div>
+    <div>
+      <ul>
+        <li v-for="(field, idx) in newEntityFields" :key="field">
+          <RemovableComponentContainer
+            :idx="idx"
+            :remove="removeField"
+            :inline="true"
+          >
+          </RemovableComponentContainer>
+          {{ field }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <label for="newEntityMethod">New Method </label>
+      <input
+        @keyup.enter="addMethod()"
+        id="newEntityMethod"
+        v-model="newEntityMethod"
+      />
+    </div>
+    <div>
+      <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
+    </div>
+    <div>
+      <ul>
+        <li v-for="(method, idx) in newEntityMethods">
+          <RemovableComponentContainer
+            :key="method"
+            :idx="idx"
+            :remove="removeMethod"
+            :inline="true"
+          >
+          </RemovableComponentContainer>
+          {{ method }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button
+        class="btn btn-primary"
+        @click="
+          addEntity({
+            pack: newEntityPack,
+            name: newEntityName,
+            fields: newEntityFields,
+            methods: newEntityMethods,
+          })
+        "
+      >
+        Add Entity
+      </button>
+    </div>
   </div>
 </template>
 
@@ -65,6 +85,7 @@ export default {
 import { ref } from "vue";
 import RemovableComponentContainer from "@/components/RemovableComponentContainer.vue";
 // import VueMultiselect from "vue-multiselect";
+const newEntityPack = ref("");
 const newEntityName = ref("");
 const newEntityFields = ref([]);
 const newEntityField = ref("");
@@ -101,11 +122,13 @@ console.log(props);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
 }
 
-label {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+#addEntityDiv > div {
+  text-align: left;
+  width: 100%;
+  padding: 10px;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span>Package: {{ pack }}</span>
     <span class="name">{{ name }}</span>
     <br />
     <ul class="fields">
@@ -12,18 +13,35 @@
         {{ method }}
       </li>
     </ul>
+    <CodeDisplay :generated-code="generatedCode" />
   </div>
 </template>
 
 <script>
 export default {
   name: "Entity",
-  props: {
-    name: String,
-    fields: Array,
-    methods: Array,
-  },
 };
+</script>
+<script setup>
+import { computed } from "vue";
+import CodeDisplay from "@/components/CodeDisplay.vue";
+
+const props = defineProps({
+  pack: String,
+  name: String,
+  fields: Array,
+  methods: Array,
+});
+const generatedCode = computed(() => {
+  return `
+package ${props.pack}
+
+public class ${props.name} {
+
+  ${props.methods}
+
+}`;
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

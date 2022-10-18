@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span>Package: {{ pack }}</span>
     <span class="name">{{ name }}</span>
     <br />
     <ul class="implementing">

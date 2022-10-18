@@ -74,4 +74,12 @@ ul {
   align-items: flex-start;
   padding: 0;
 }
+
+button {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
 </style>
