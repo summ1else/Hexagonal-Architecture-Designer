@@ -159,8 +159,8 @@ export const useArchStore = defineStore({
         adapterType,
       });
     },
-    addService({ name, implementing }) {
-      this.services.push({ name, implementing });
+    addService({ pack, name, implementing }) {
+      this.services.push({ pack, name, implementing });
     },
     removeInputAdapter(idx) {
       this.inputAdapters.splice(idx, 1);

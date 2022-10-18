@@ -1,16 +1,16 @@
 <template>
   <div id="addInputPortDiv">
     <div>
-      <label for="newInputAdapterPack">Package</label><br />
-      <input id="newInputAdapterPack" v-model="newInputPortPack" />
+      <label for="newInputPortPack">Package</label><br />
+      <input id="newInputPortPack" v-model="newInputPortPack" />
     </div>
     <div>
       <label for="newInputPortName">Use Input Port Name </label>
       <input id="newInputPortName" v-model="newInputPortName" />
     </div>
     <div class="adderField">
-      <label for="newInputAdapterType">New Method </label>
-      <input id="newInputAdapterType" v-model="newInputPortMethod" />
+      <label for="newInputPortMethod">New Method </label>
+      <input id="newInputPortMethod" v-model="newInputPortMethod" />
       <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
     </div>
     <div>

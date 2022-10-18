@@ -20,7 +20,7 @@ import "codemirror/mode/clike/clike.js";
 import "codemirror/theme/dracula.css";
 
 const props = defineProps({
-  generatedCode: Function,
+  generatedCode: String,
 });
 
 const shouldShowCode = ref(true);

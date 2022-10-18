@@ -11,7 +11,7 @@
   <AddService
     v-show="architecture.inputDisplay === 'addService'"
     :add-service="architecture.addService"
-    :use-case-names="architecture.getAllInputPortNames"
+    :input-port-names="architecture.getAllInputPortNames"
   />
   <AddEntity
     v-show="architecture.inputDisplay === 'addEntity'"

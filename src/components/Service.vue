@@ -22,6 +22,7 @@ import { useArchStore } from "@/stores/architecture";
 import CodeDisplay from "@/components/CodeDisplay.vue";
 const archStore = useArchStore();
 const props = defineProps({
+  pack: String,
   name: String,
   implementing: Array,
 });

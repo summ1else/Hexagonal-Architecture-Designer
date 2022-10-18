@@ -13,13 +13,13 @@
       <input id="newInputAdapterType" v-model="newInputAdapterType" />
     </div>
     <div>
-      <!--      <VueMultiselect-->
-      <!--        class="multiselect"-->
-      <!--        v-model="newInputAdapterCalling"-->
-      <!--        :multiple="true"-->
-      <!--        :options="inputAdapterNames"-->
-      <!--      >-->
-      <!--      </VueMultiselect>-->
+      <VueMultiselect
+        class="multiselect"
+        v-model="newInputAdapterCalling"
+        :multiple="true"
+        :options="inputAdapterNames"
+      >
+      </VueMultiselect>
     </div>
     <div>
       <button

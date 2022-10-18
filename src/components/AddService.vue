@@ -1,25 +1,37 @@
 <template>
-  <div id="addInputPortDiv">
-    <label for="newInputAdapterName">Service Name </label>
-    <input id="newInputAdapterName" v-model="newServiceName" />
-    <!--    <VueMultiselect-->
-    <!--      v-model="newServiceImplementing"-->
-    <!--      :multiple="true"-->
-    <!--      :options="inputPortNames"-->
-    <!--    >-->
-    <!--      &lt;!&ndash; TODO implement a computed property instead &ndash;&gt;-->
-    <!--    </VueMultiselect>-->
-    <button
-      class="btn btn-primary"
-      @click="
-        addService({
-          name: newServiceName,
-          implementing: newServiceImplementing,
-        })
-      "
-    >
-      Add Service
-    </button>
+  <div id="addServiceDiv">
+    <div>
+      <label for="newServicePack">Package</label><br />
+      <input id="newServicePack" v-model="newServicePack" />
+    </div>
+    <div>
+      <label for="newServiceName">Service Name </label>
+      <input id="newServiceName" v-model="newServiceName" />
+    </div>
+    <div>
+      <VueMultiselect
+        class="multiselect"
+        v-model="newServiceImplementing"
+        :multiple="true"
+        :options="inputPortNames"
+      >
+        <!-- TODO implement a computed property instead -->
+      </VueMultiselect>
+    </div>
+    <div>
+      <button
+        class="btn btn-primary"
+        @click="
+          addService({
+            pack: newServicePack,
+            name: newServiceName,
+            implementing: newServiceImplementing,
+          })
+        "
+      >
+        Add Service
+      </button>
+    </div>
   </div>
 </template>
 
@@ -33,6 +45,7 @@ export default {
 import { ref } from "vue";
 import VueMultiselect from "vue-multiselect";
 
+const newServicePack = ref("");
 const newServiceName = ref("");
 const newServiceImplementing = ref([]);
 const props = defineProps({
@@ -44,15 +57,20 @@ console.log(props);
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
-#addInputPortDiv {
+#addServiceDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
 }
 
-label {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+#addServiceDiv > div {
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+}
+.multiselect {
+  width: 100%;
 }
 </style>
