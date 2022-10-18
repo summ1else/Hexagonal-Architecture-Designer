@@ -45,9 +45,8 @@
     </div>
     <div>
       <ul>
-        <li v-for="(method, idx) in newEntityMethods">
+        <li v-for="(method, idx) in newEntityMethods" :key="method">
           <RemovableComponentContainer
-            :key="method"
             :idx="idx"
             :remove="removeMethod"
             :inline="true"
