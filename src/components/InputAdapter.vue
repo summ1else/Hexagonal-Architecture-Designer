@@ -33,7 +33,8 @@ const props = defineProps({
 });
 const generatedCode = computed(() => {
   const methods = props.calling
-    .flatMap((name) => archStore.getUseCaseByName(name).methods)
+    .flatMap((name) => archStore.getInputPortByName(name)?.methods)
+    .filter((n) => n)
     .map((method) => {
       method = method.trim();
       return method;

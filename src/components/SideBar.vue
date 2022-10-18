@@ -1,38 +1,38 @@
 <template>
-    <AddInputAdapter
-        v-show="architecture.inputDisplay === 'addInputAdapter'"
-        :input-adapter-names="architecture.getAllUseCaseNames"
-        :add-input-adapter="architecture.addInputAdapter"
-    />
-    <AddUseCasePort
-        v-show="architecture.inputDisplay === 'addUseCasePort'"
-        :add-use-case-port="architecture.addUseCasePort"
-    />
-    <AddService
-        v-show="architecture.inputDisplay === 'addService'"
-        :add-service="architecture.addService"
-        :use-case-names="architecture.getAllUseCaseNames"
-    />
-    <AddEntity
-        v-show="architecture.inputDisplay === 'addEntity'"
-        :add-entity="architecture.addEntity"
-    />
-    <AddRepository
-        v-show="architecture.inputDisplay === 'addRepository'"
-        :add-repository="architecture.addRepository"
-    />
-    <AddOutputAdapter
-        v-show="architecture.inputDisplay === 'addOutputAdapter'"
-        :add-output-adapter="architecture.addOutputAdapter"
-        :repository-names="architecture.getAllRepositoryNames"
-    />
+  <AddInputAdapter
+    v-show="architecture.inputDisplay === 'addInputAdapter'"
+    :input-adapter-names="architecture.getAllInputPortNames"
+    :add-input-adapter="architecture.addInputAdapter"
+  />
+  <AddInputPort
+    v-show="architecture.inputDisplay === 'addInputPort'"
+    :add-use-case-port="architecture.addInputPort"
+  />
+  <AddService
+    v-show="architecture.inputDisplay === 'addService'"
+    :add-service="architecture.addService"
+    :use-case-names="architecture.getAllInputPortNames"
+  />
+  <AddEntity
+    v-show="architecture.inputDisplay === 'addEntity'"
+    :add-entity="architecture.addEntity"
+  />
+  <AddRepository
+    v-show="architecture.inputDisplay === 'addRepository'"
+    :add-repository="architecture.addRepository"
+  />
+  <AddOutputAdapter
+    v-show="architecture.inputDisplay === 'addOutputAdapter'"
+    :add-output-adapter="architecture.addOutputAdapter"
+    :repository-names="architecture.getAllRepositoryNames"
+  />
 </template>
 
 <script>
-import {defineComponent} from "vue";
-import {useArchStore} from "@/stores/architecture";
+import { defineComponent } from "vue";
+import { useArchStore } from "@/stores/architecture";
 import AddInputAdapterVue from "@/components/AddInputAdapter.vue";
-import AddUseCasePortVue from "@/components/AddUseCasePort.vue";
+import AddInputPortVue from "@/components/AddInputPort.vue";
 import AddServiceVue from "@/components/AddService.vue";
 import AddEntityVue from "@/components/AddEntity.vue";
 import AddRepositoryVue from "@/components/AddSecondaryPort.vue";
@@ -44,13 +44,13 @@ export default defineComponent({
     AddOutputAdapter: AddOutputAdapterVue,
     AddRepository: AddRepositoryVue,
     AddInputAdapter: AddInputAdapterVue,
-    AddUseCasePort: AddUseCasePortVue,
+    AddInputPort: AddInputPortVue,
     AddService: AddServiceVue,
     AddEntity: AddEntityVue,
   },
   setup() {
     const architecture = useArchStore();
-    window.stores = {architecture};
+    window.stores = { architecture };
     return {
       architecture,
     };

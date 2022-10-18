@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "UseCasePort",
+  name: "InputPort",
 };
 </script>
 <script setup>

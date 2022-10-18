@@ -27,7 +27,8 @@ const props = defineProps({
 });
 const generatedCode = computed(() => {
   const methods = props.implementing
-    .flatMap((name) => archStore.getUseCaseByName(name).methods)
+    .flatMap((name) => archStore.getInputPortByName(name)?.methods)
+    .filter((n) => n)
     .map((method) => {
       method = method.trim();
       if (method.indexOf(";") === method.length - 1) {

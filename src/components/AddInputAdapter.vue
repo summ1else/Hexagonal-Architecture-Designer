@@ -2,29 +2,29 @@
   <div id="addInputAdapterDiv">
     <div>
       <label for="newInputAdapterPack">Package</label><br />
-      <input id="newInputAdapterPack" v-model="newInputAdapterPack"/>
+      <input id="newInputAdapterPack" v-model="newInputAdapterPack" />
     </div>
     <div>
       <label for="newInputAdapterName">InputAdapter Name </label><br />
-      <input id="newInputAdapterName" v-model="newInputAdapterName"/>
+      <input id="newInputAdapterName" v-model="newInputAdapterName" />
     </div>
     <div>
       <label for="newInputAdapterType">InputAdapter Type </label><br />
-      <input id="newInputAdapterType" v-model="newInputAdapterType"/>
+      <input id="newInputAdapterType" v-model="newInputAdapterType" />
     </div>
     <div>
-      <VueMultiselect
-          class="multiselect"
-          v-model="newInputAdapterCalling"
-          :multiple="true"
-          :options="inputAdapterNames"
-      >
-      </VueMultiselect>
+      <!--      <VueMultiselect-->
+      <!--        class="multiselect"-->
+      <!--        v-model="newInputAdapterCalling"-->
+      <!--        :multiple="true"-->
+      <!--        :options="inputAdapterNames"-->
+      <!--      >-->
+      <!--      </VueMultiselect>-->
     </div>
     <div>
       <button
-          class="btn btn-primary"
-          @click="
+        class="btn btn-primary"
+        @click="
           addInputAdapter({
             pack: newInputAdapterPack,
             name: newInputAdapterName,
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 import VueMultiselect from "vue-multiselect";
 
 const newInputAdapterPack = ref("");

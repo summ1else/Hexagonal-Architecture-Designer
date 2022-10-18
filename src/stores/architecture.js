@@ -17,7 +17,7 @@ export const useArchStore = defineStore({
         calling: ["First Use Case"],
       },
     ]),
-    useCases: useStorage("useCases", [
+    inputPorts: useStorage("inputPorts", [
       {
         iName: "First Use Case",
         methods: ["method one", "method two"],
@@ -51,8 +51,8 @@ export const useArchStore = defineStore({
     ]),
   }),
   getters: {
-    getAllUseCaseNames(state) {
-      return state.useCases.map((inputPort) => inputPort.iName);
+    getAllInputPortNames(state) {
+      return state.inputPorts.map((inputPort) => inputPort.iName);
     },
     getAllRepositoryNames(state) {
       return state.repositories.map((repository) => repository.iName);
@@ -69,49 +69,49 @@ export const useArchStore = defineStore({
     getAllServiceNames(state) {
       return state.services.map((service) => service.name);
     },
-    getImplementedUseCases(state) {
+    getImplementedInputPorts(state) {
       if (state.services.length === 0) {
         return [];
       }
-      return this.getAllUseCaseNames.filter(
-        (useCase) =>
+      return this.getAllInputPortNames.filter(
+        (inputPort) =>
           state.services.filter((service) =>
-            service.implementing.includes(useCase)
+            service.implementing.includes(inputPort)
           ).length > 0
       );
     },
-    getUnimplementedUseCases() {
-      return this.getAllUseCaseNames.filter(
-        (name) => !this.getImplementedUseCases.includes(name)
+    getUnimplementedInputPorts() {
+      return this.getAllInputPortNames.filter(
+        (name) => !this.getImplementedInputPorts.includes(name)
       );
     },
-    getCalledUseCases(state) {
+    getCalledInputPorts(state) {
       console.log(state.inputAdapters.length);
       if (state.inputAdapters.length === 0) {
         console.log("called", []);
         return [];
       }
-      let calledUseCases = this.getAllUseCaseNames.filter(
-        (useCase) =>
+      let calledInputPorts = this.getAllInputPortNames.filter(
+        (inputPort) =>
           state.inputAdapters.filter((inputAdapter) =>
-            inputAdapter.calling.includes(useCase)
+            inputAdapter.calling.includes(inputPort)
           ).length > 0
       );
-      console.log("called", calledUseCases);
-      return calledUseCases;
+      console.log("called", calledInputPorts);
+      return calledInputPorts;
     },
-    getUncalledUseCases() {
-      let uncalledUseCases = this.getAllUseCaseNames.filter(
-        (name) => !this.getCalledUseCases.includes(name)
+    getUncalledInputPorts() {
+      let uncalledInputPorts = this.getAllInputPortNames.filter(
+        (name) => !this.getCalledInputPorts.includes(name)
       );
-      console.log("uncalled", uncalledUseCases);
-      return uncalledUseCases;
+      console.log("uncalled", uncalledInputPorts);
+      return uncalledInputPorts;
     },
     getColor() {
       switch (this.inputDisplay) {
         case "addInputAdapter":
           return "pink";
-        case "addUseCasePort":
+        case "addInputPort":
           return "cornflowerblue";
         case "addService":
           return "tan";
@@ -135,8 +135,8 @@ export const useArchStore = defineStore({
         calling,
       });
     },
-    addUseCasePort({ iName, methods }) {
-      this.useCases.push({
+    addInputPort({ iName, methods }) {
+      this.inputPorts.push({
         iName,
         methods,
       });
@@ -164,8 +164,8 @@ export const useArchStore = defineStore({
     removeInputAdapter(idx) {
       this.inputAdapters.splice(idx, 1);
     },
-    removeUseCase(idx) {
-      this.useCases.splice(idx, 1);
+    removeInputPort(idx) {
+      this.inputPorts.splice(idx, 1);
     },
     removeService(idx) {
       this.services.splice(idx, 1);
@@ -179,8 +179,8 @@ export const useArchStore = defineStore({
     removeOutputAdapter(idx) {
       this.outputAdapters.splice(idx, 1);
     },
-    getUseCaseByName(name) {
-      return this.useCases.filter((useCase) => useCase.iName === name)[0];
+    getInputPortByName(name) {
+      return this.inputPorts.filter((inputPort) => inputPort.iName === name)[0];
     },
     setInputDisplay(input) {
       this.inputDisplay = input;

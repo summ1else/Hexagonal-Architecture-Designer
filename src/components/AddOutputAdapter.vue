@@ -1,15 +1,15 @@
 <template>
-  <div id="addUseCasePortDiv">
+  <div id="addInputPortDiv">
     <label for="newOutputAdapterName">OutputAdapter Name </label>
     <input id="newOutputAdapterName" v-model="newOutputAdapterName" />
     <label for="newOutputAdapterType">OutputAdapter Type </label>
     <input id="newOutputAdapterType" v-model="newOutputAdapterType" />
-    <VueMultiselect
-      v-model="newOutputAdapterCalling"
-      :multiple="true"
-      :options="repositoryNames"
-    >
-    </VueMultiselect>
+    <!--    <VueMultiselect-->
+    <!--      v-model="newOutputAdapterCalling"-->
+    <!--      :multiple="true"-->
+    <!--      :options="repositoryNames"-->
+    <!--    >-->
+    <!--    </VueMultiselect>-->
     <button
       class="btn btn-primary"
       @click="
@@ -48,7 +48,7 @@ console.log(props);
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style scoped>
-#addUseCasePortDiv {
+#addInputPortDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

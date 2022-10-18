@@ -1,0 +1,92 @@
+<template>
+  <div id="addInputPortDiv">
+    <!--    <div>-->
+    <!--      <label for="newInputAdapterPack">Package</label><br />-->
+    <!--      <input id="newInputAdapterPack" v-model="newInputAdapterPack" />-->
+    <!--    </div>-->
+    <div>
+      <label for="newInputPortName">Use Case Port Name </label>
+      <input id="newInputPortName" v-model="newInputPortName" />
+    </div>
+    <div class="adderField">
+      <label for="newInputAdapterType">New Method </label>
+      <input id="newInputAdapterType" v-model="newInputPortMethod" />
+      <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
+    </div>
+    <div>
+      <ul>
+        <li v-for="(method, idx) in newInputPortMethods" :key="method">
+          <RemovableComponentContainer
+            :remove="removeMethod"
+            :idx="idx"
+            :inline="true"
+          >
+          </RemovableComponentContainer>
+          {{ method }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button
+        class="btn btn-primary"
+        @click="
+          addInputPort({
+            iName: newInputPortName,
+            methods: newInputPortMethods,
+          })
+        "
+      >
+        Add Use Case Port
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "AddInputPort",
+};
+</script>
+
+<script setup>
+import { ref } from "vue";
+import RemovableComponentContainer from "@/components/RemovableComponentContainer.vue";
+// import VueMultiselect from "vue-multiselect";
+const newInputPortName = ref("");
+const newInputPortMethods = ref([]);
+const newInputPortMethod = ref("");
+const props = defineProps({
+  addInputPort: Function,
+});
+
+function addMethod() {
+  newInputPortMethods.value.push(newInputPortMethod.value);
+}
+
+const removeMethod = (idx) => {
+  newInputPortMethods.value.splice(idx, 1);
+};
+
+console.log(props);
+</script>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style scoped>
+#addInputPortDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+#addInputPortDiv > div {
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+}
+
+.adderField > button {
+  margin-top: 10px;
+}
+</style>

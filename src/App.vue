@@ -12,13 +12,13 @@
           Add
         </button>
         <ul>
-          <li class="h5">Uncalled UseCases</li>
-          <li v-show="architecture.getUncalledUseCases.length === 0">None</li>
+          <li class="h5">Uncalled InputPorts</li>
+          <li v-show="architecture.getUncalledInputPorts.length === 0">None</li>
           <li
-            v-for="useCase in architecture.getUncalledUseCases"
-            :key="useCase"
+            v-for="inputPort in architecture.getUncalledInputPorts"
+            :key="inputPort"
           >
-            {{ useCase }}
+            {{ inputPort }}
           </li>
         </ul>
         <RemovableComponentContainer
@@ -30,31 +30,31 @@
           <InputAdapter v-bind="inputAdapter"></InputAdapter>
         </RemovableComponentContainer>
       </div>
-      <div class="useCases typeContainer">
-        <button @click="architecture.setInputDisplay('addUseCasePort')">
+      <div class="inputPorts typeContainer">
+        <button @click="architecture.setInputDisplay('addInputPort')">
           Add
         </button>
         <RemovableComponentContainer
-          v-for="(useCase, idx) in architecture.useCases"
-          :remove="architecture.removeUseCase"
+          v-for="(inputPort, idx) in architecture.inputPorts"
+          :remove="architecture.removeInputPort"
           :idx="idx"
-          :key="useCase.iName"
+          :key="inputPort.iName"
         >
-          <UseCasePort v-bind="useCase" />
+          <InputPort v-bind="inputPort" />
         </RemovableComponentContainer>
       </div>
       <div class="services typeContainer">
         <button @click="architecture.setInputDisplay('addService')">Add</button>
         <ul>
-          <li class="h5">Unimplemented UseCases</li>
-          <li v-show="architecture.getUnimplementedUseCases.length === 0">
+          <li class="h5">Unimplemented InputPorts</li>
+          <li v-show="architecture.getUnimplementedInputPorts.length === 0">
             None
           </li>
           <li
-            v-for="useCase in architecture.getUnimplementedUseCases"
-            :key="useCase"
+            v-for="inputPort in architecture.getUnimplementedInputPorts"
+            :key="inputPort"
           >
-            {{ useCase }}
+            {{ inputPort }}
           </li>
         </ul>
         <RemovableComponentContainer
@@ -109,7 +109,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import UseCasePortVue from "./components/UseCasePort.vue";
+import InputPortVue from "./components/InputPort.vue";
 import RepositoryPortVue from "./components/RepositoryPort.vue";
 import InputAdapterVue from "./components/InputAdapter.vue";
 import OutputAdapterVue from "./components/OutputAdapter.vue";
@@ -126,7 +126,7 @@ export default defineComponent({
     RemovableComponentContainer,
     MenuHeader: MenuHeaderVue,
     InputAdapter: InputAdapterVue,
-    UseCasePort: UseCasePortVue,
+    InputPort: InputPortVue,
     RepositoryPort: RepositoryPortVue,
     OutputAdapter: OutputAdapterVue,
     Service: ServiceVue,
@@ -200,7 +200,7 @@ body {
   border: 3px solid pink;
 }
 
-.useCases > div {
+.inputPorts > div {
   border: 3px solid cornflowerblue;
 }
 
