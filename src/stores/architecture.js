@@ -36,7 +36,7 @@ export const useArchStore = defineStore({
         methods: ["public static void main(Object... args);"],
       },
     ]),
-    repositories: useStorage("repositories", [
+    outputPorts: useStorage("outputPorts", [
       {
         iName: "First OutputPort",
         methods: ["test3", "test4"],
@@ -55,7 +55,7 @@ export const useArchStore = defineStore({
       return state.inputPorts.map((inputPort) => inputPort.iName);
     },
     getAllOutputPortNames(state) {
-      return state.repositories.map((outputPort) => outputPort.iName);
+      return state.outputPorts.map((outputPort) => outputPort.iName);
     },
     getAllOutputAdapterNames(state) {
       return state.outputAdapters.map((outputAdapter) => outputAdapter.name);
@@ -151,10 +151,11 @@ export const useArchStore = defineStore({
       });
     },
     addOutputPort({ iName, methods }) {
-      this.repositories.push({ iName, methods });
+      this.outputPorts.push({ iName, methods });
     },
-    addOutputAdapter({ name, calling, adapterType }) {
+    addOutputAdapter({ pack, name, calling, adapterType }) {
       this.outputAdapters.push({
+        pack,
         name,
         calling,
         adapterType,
@@ -176,13 +177,18 @@ export const useArchStore = defineStore({
       this.entities.splice(idx, 1);
     },
     removeOutputPort(idx) {
-      this.repositories.splice(idx, 1);
+      this.outputPorts.splice(idx, 1);
     },
     removeOutputAdapter(idx) {
       this.outputAdapters.splice(idx, 1);
     },
     getInputPortByName(name) {
       return this.inputPorts.filter((inputPort) => inputPort.iName === name)[0];
+    },
+    getOutputPortByName(name) {
+      return this.outputPorts.filter(
+        (outputPort) => outputPort.iName === name
+      )[0];
     },
     setInputDisplay(input) {
       this.inputDisplay = input;

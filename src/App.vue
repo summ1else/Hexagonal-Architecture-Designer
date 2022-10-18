@@ -77,12 +77,12 @@
           <Entity v-bind="entity" />
         </RemovableComponentContainer>
       </div>
-      <div class="repositories typeContainer">
+      <div class="outputPorts typeContainer">
         <button @click="architecture.setInputDisplay('addOutputPort')">
           Add
         </button>
         <RemovableComponentContainer
-          v-for="(outputPort, idx) in architecture.repositories"
+          v-for="(outputPort, idx) in architecture.outputPorts"
           :remove="architecture.removeOutputPort"
           :idx="idx"
           :key="outputPort.iName"
@@ -212,7 +212,7 @@ body {
   border: 3px solid lightgreen;
 }
 
-.repositories > div {
+.outputPorts > div {
   border: 3px solid lightsalmon;
 }
 
