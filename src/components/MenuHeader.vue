@@ -46,6 +46,7 @@ const selectedContainerOption = ref("");
   flex-direction: row;
   justify-content: space-between;
   font-size: 1.5em;
+  margin: 0 10px;
 }
 
 #navLinks {
