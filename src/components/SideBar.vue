@@ -17,14 +17,14 @@
     v-show="architecture.inputDisplay === 'addEntity'"
     :add-entity="architecture.addEntity"
   />
-  <AddRepository
-    v-show="architecture.inputDisplay === 'addRepository'"
-    :add-repository="architecture.addRepository"
+  <AddOutputPort
+    v-show="architecture.inputDisplay === 'addOutputPort'"
+    :add-output-port="architecture.addOutputPort"
   />
   <AddOutputAdapter
     v-show="architecture.inputDisplay === 'addOutputAdapter'"
     :add-output-adapter="architecture.addOutputAdapter"
-    :repository-names="architecture.getAllRepositoryNames"
+    :output-port-names="architecture.getAllOutputPortNames"
   />
 </template>
 
@@ -35,14 +35,14 @@ import AddInputAdapterVue from "@/components/AddInputAdapter.vue";
 import AddInputPortVue from "@/components/AddInputPort.vue";
 import AddServiceVue from "@/components/AddService.vue";
 import AddEntityVue from "@/components/AddEntity.vue";
-import AddRepositoryVue from "@/components/AddSecondaryPort.vue";
+import AddOutputPortVue from "@/components/AddOutputPort.vue";
 import AddOutputAdapterVue from "@/components/AddOutputAdapter.vue";
 
 export default defineComponent({
   name: "SideBar",
   components: {
     AddOutputAdapter: AddOutputAdapterVue,
-    AddRepository: AddRepositoryVue,
+    AddOutputPort: AddOutputPortVue,
     AddInputAdapter: AddInputAdapterVue,
     AddInputPort: AddInputPortVue,
     AddService: AddServiceVue,

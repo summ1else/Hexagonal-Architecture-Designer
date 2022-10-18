@@ -7,7 +7,7 @@
     <!--    <VueMultiselect-->
     <!--      v-model="newOutputAdapterCalling"-->
     <!--      :multiple="true"-->
-    <!--      :options="repositoryNames"-->
+    <!--      :options="outputPortNames"-->
     <!--    >-->
     <!--    </VueMultiselect>-->
     <button
@@ -41,7 +41,7 @@ const newOutputAdapterCalling = ref([]);
 // const outputAdapterNames = ref(["list", "of", "options"]);
 const props = defineProps({
   addOutputAdapter: Function,
-  repositoryNames: Array,
+  outputPortNames: Array,
 });
 console.log(props);
 </script>

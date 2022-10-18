@@ -38,14 +38,14 @@ export const useArchStore = defineStore({
     ]),
     repositories: useStorage("repositories", [
       {
-        iName: "First Repository",
+        iName: "First OutputPort",
         methods: ["test3", "test4"],
       },
     ]),
     outputAdapters: useStorage("outputAdapters", [
       {
-        name: "JPA Repository",
-        calling: ["First Repository"],
+        name: "JPA OutputPort",
+        calling: ["First OutputPort"],
         adapterType: "db",
       },
     ]),
@@ -54,8 +54,8 @@ export const useArchStore = defineStore({
     getAllInputPortNames(state) {
       return state.inputPorts.map((inputPort) => inputPort.iName);
     },
-    getAllRepositoryNames(state) {
-      return state.repositories.map((repository) => repository.iName);
+    getAllOutputPortNames(state) {
+      return state.repositories.map((outputPort) => outputPort.iName);
     },
     getAllOutputAdapterNames(state) {
       return state.outputAdapters.map((outputAdapter) => outputAdapter.name);
@@ -117,7 +117,7 @@ export const useArchStore = defineStore({
           return "tan";
         case "addEntity":
           return "lightgreen";
-        case "addRepository":
+        case "addOutputPort":
           return "lightsalmon";
         case "addOutputAdapter":
           return "lightseagreen";
@@ -150,7 +150,7 @@ export const useArchStore = defineStore({
         methods,
       });
     },
-    addRepository({ iName, methods }) {
+    addOutputPort({ iName, methods }) {
       this.repositories.push({ iName, methods });
     },
     addOutputAdapter({ name, calling, adapterType }) {
@@ -175,7 +175,7 @@ export const useArchStore = defineStore({
     removeEntity(idx) {
       this.entities.splice(idx, 1);
     },
-    removeRepository(idx) {
+    removeOutputPort(idx) {
       this.repositories.splice(idx, 1);
     },
     removeOutputAdapter(idx) {

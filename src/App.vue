@@ -78,16 +78,16 @@
         </RemovableComponentContainer>
       </div>
       <div class="repositories typeContainer">
-        <button @click="architecture.setInputDisplay('addRepository')">
+        <button @click="architecture.setInputDisplay('addOutputPort')">
           Add
         </button>
         <RemovableComponentContainer
-          v-for="(repository, idx) in architecture.repositories"
-          :remove="architecture.removeRepository"
+          v-for="(outputPort, idx) in architecture.repositories"
+          :remove="architecture.removeOutputPort"
           :idx="idx"
-          :key="repository.iName"
+          :key="outputPort.iName"
         >
-          <RepositoryPort v-bind="repository" />
+          <OutputPortPort v-bind="outputPort" />
         </RemovableComponentContainer>
       </div>
       <div class="outputAdapters typeContainer">
@@ -110,7 +110,7 @@
 <script>
 import { defineComponent } from "vue";
 import InputPortVue from "./components/InputPort.vue";
-import RepositoryPortVue from "./components/RepositoryPort.vue";
+import OutputPortPortVue from "./components/OutputPort.vue";
 import InputAdapterVue from "./components/InputAdapter.vue";
 import OutputAdapterVue from "./components/OutputAdapter.vue";
 import MenuHeaderVue from "./components/MenuHeader.vue";
@@ -127,7 +127,7 @@ export default defineComponent({
     MenuHeader: MenuHeaderVue,
     InputAdapter: InputAdapterVue,
     InputPort: InputPortVue,
-    RepositoryPort: RepositoryPortVue,
+    OutputPortPort: OutputPortPortVue,
     OutputAdapter: OutputAdapterVue,
     Service: ServiceVue,
     Entity: EntityVue,

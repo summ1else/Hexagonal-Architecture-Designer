@@ -33,12 +33,18 @@ const props = defineProps({
   methods: Array,
 });
 const generatedCode = computed(() => {
+  const methods = props.methods
+    .map((method) => {
+      method = method.trim();
+      return method;
+    })
+    .join("\r\n\r\n  ");
   return `
 package ${props.pack}
 
 public class ${props.name} {
 
-  ${props.methods}
+  ${methods}
 
 }`;
 });
