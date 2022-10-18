@@ -1,31 +1,67 @@
 <template>
-  <AddInputAdapter
-    v-show="architecture.inputDisplay === 'addInputAdapter'"
-    :input-adapter-names="architecture.getAllInputPortNames"
-    :add-input-adapter="architecture.addInputAdapter"
-  />
-  <AddInputPort
-    v-show="architecture.inputDisplay === 'addInputPort'"
-    :add-input-port="architecture.addInputPort"
-  />
-  <AddService
-    v-show="architecture.inputDisplay === 'addService'"
-    :add-service="architecture.addService"
-    :input-port-names="architecture.getAllInputPortNames"
-  />
-  <AddEntity
-    v-show="architecture.inputDisplay === 'addEntity'"
-    :add-entity="architecture.addEntity"
-  />
-  <AddOutputPort
-    v-show="architecture.inputDisplay === 'addOutputPort'"
-    :add-output-port="architecture.addOutputPort"
-  />
-  <AddOutputAdapter
-    v-show="architecture.inputDisplay === 'addOutputAdapter'"
-    :add-output-adapter="architecture.addOutputAdapter"
-    :output-port-names="architecture.getAllOutputPortNames"
-  />
+  <div class="editor">
+    <AddInputAdapter
+      v-show="architecture.inputDisplay === 'addInputAdapter'"
+      :input-adapter-names="architecture.getAllInputPortNames"
+      :add-input-adapter="architecture.addInputAdapter"
+    />
+    <AddInputPort
+      v-show="architecture.inputDisplay === 'addInputPort'"
+      :add-input-port="architecture.addInputPort"
+    />
+    <AddService
+      v-show="architecture.inputDisplay === 'addService'"
+      :add-service="architecture.addService"
+      :input-port-names="architecture.getAllInputPortNames"
+    />
+    <AddEntity
+      v-show="architecture.inputDisplay === 'addEntity'"
+      :add-entity="architecture.addEntity"
+    />
+    <AddOutputPort
+      v-show="architecture.inputDisplay === 'addOutputPort'"
+      :add-output-port="architecture.addOutputPort"
+    />
+    <AddOutputAdapter
+      v-show="architecture.inputDisplay === 'addOutputAdapter'"
+      :add-output-adapter="architecture.addOutputAdapter"
+      :output-port-names="architecture.getAllOutputPortNames"
+    />
+  </div>
+  <div id="editor-details">
+    <div
+      v-show="
+        architecture.inputDisplay === 'addInputAdapter' &&
+        architecture.getUncalledInputPorts.length !== 0
+      "
+    >
+      <span class="h4">Uncalled InputPorts</span>
+      <ul>
+        <li
+          v-for="inputPort in architecture.getUncalledInputPorts"
+          :key="inputPort"
+        >
+          {{ inputPort }}
+        </li>
+      </ul>
+    </div>
+    <div
+      v-show="
+        architecture.inputDisplay === 'addService' &&
+        architecture.getUnimplementedInputPorts.length === 0
+      "
+    >
+      <span class="h4">Unimplemented InputPorts</span>
+      <ul>
+        <li
+          v-for="inputPort in architecture.getUnimplementedInputPorts"
+          :key="inputPort"
+        >
+          {{ inputPort }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -81,5 +117,13 @@ button {
 
 input {
   width: 100%;
+}
+
+#editor-details {
+  margin: 10px;
+  padding-top: 10px;
+  border-top: 2px solid black;
+  height: 25%;
+  overflow-y: auto;
 }
 </style>

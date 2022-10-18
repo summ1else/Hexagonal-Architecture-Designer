@@ -11,16 +11,6 @@
         <button @click="architecture.setInputDisplay('addInputAdapter')">
           Add
         </button>
-        <ul>
-          <li class="h5">Uncalled InputPorts</li>
-          <li v-show="architecture.getUncalledInputPorts.length === 0">None</li>
-          <li
-            v-for="inputPort in architecture.getUncalledInputPorts"
-            :key="inputPort"
-          >
-            {{ inputPort }}
-          </li>
-        </ul>
         <RemovableComponentContainer
           v-for="(inputAdapter, idx) in architecture.inputAdapters"
           :remove="architecture.removeInputAdapter"
@@ -45,18 +35,6 @@
       </div>
       <div class="services typeContainer">
         <button @click="architecture.setInputDisplay('addService')">Add</button>
-        <ul>
-          <li class="h5">Unimplemented InputPorts</li>
-          <li v-show="architecture.getUnimplementedInputPorts.length === 0">
-            None
-          </li>
-          <li
-            v-for="inputPort in architecture.getUnimplementedInputPorts"
-            :key="inputPort"
-          >
-            {{ inputPort }}
-          </li>
-        </ul>
         <RemovableComponentContainer
           v-for="(service, idx) in architecture.services"
           :remove="architecture.removeService"
@@ -176,6 +154,9 @@ body {
 #sideBar {
   flex: 1;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #containers {
