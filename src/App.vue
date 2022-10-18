@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-  <MenuHeader/>
+    <MenuHeader />
   </div>
   <div id="belowFold">
     <div id="sideBar" :style="{ backgroundColor: architecture.getColor }">
@@ -14,15 +14,18 @@
         <ul>
           <li class="h5">Uncalled UseCases</li>
           <li v-show="architecture.getUncalledUseCases.length === 0">None</li>
-          <li v-for="useCase in architecture.getUncalledUseCases" :key="useCase">
+          <li
+            v-for="useCase in architecture.getUncalledUseCases"
+            :key="useCase"
+          >
             {{ useCase }}
           </li>
         </ul>
         <RemovableComponentContainer
-            v-for="(inputAdapter, idx) in architecture.inputAdapters"
-            :remove="architecture.removeInputAdapter"
-            :idx="idx"
-            :key="inputAdapter.name"
+          v-for="(inputAdapter, idx) in architecture.inputAdapters"
+          :remove="architecture.removeInputAdapter"
+          :idx="idx"
+          :key="inputAdapter.name"
         >
           <InputAdapter v-bind="inputAdapter"></InputAdapter>
         </RemovableComponentContainer>
@@ -32,12 +35,12 @@
           Add
         </button>
         <RemovableComponentContainer
-            v-for="(useCase, idx) in architecture.useCases"
-            :remove="architecture.removeUseCase"
-            :idx="idx"
-            :key="useCase.iName"
+          v-for="(useCase, idx) in architecture.useCases"
+          :remove="architecture.removeUseCase"
+          :idx="idx"
+          :key="useCase.iName"
         >
-          <UseCasePort v-bind="useCase"/>
+          <UseCasePort v-bind="useCase" />
         </RemovableComponentContainer>
       </div>
       <div class="services typeContainer">
@@ -48,30 +51,30 @@
             None
           </li>
           <li
-              v-for="useCase in architecture.getUnimplementedUseCases"
-              :key="useCase"
+            v-for="useCase in architecture.getUnimplementedUseCases"
+            :key="useCase"
           >
             {{ useCase }}
           </li>
         </ul>
         <RemovableComponentContainer
-            v-for="(service, idx) in architecture.services"
-            :remove="architecture.removeService"
-            :idx="idx"
-            :key="service.name"
+          v-for="(service, idx) in architecture.services"
+          :remove="architecture.removeService"
+          :idx="idx"
+          :key="service.name"
         >
-          <Service v-bind="service"/>
+          <Service v-bind="service" />
         </RemovableComponentContainer>
       </div>
       <div class="entities typeContainer">
         <button @click="architecture.setInputDisplay('addEntity')">Add</button>
         <RemovableComponentContainer
-            v-for="(entity, idx) in architecture.entities"
-            :remove="architecture.removeEntity"
-            :idx="idx"
-            :key="entity.name"
+          v-for="(entity, idx) in architecture.entities"
+          :remove="architecture.removeEntity"
+          :idx="idx"
+          :key="entity.name"
         >
-          <Entity v-bind="entity"/>
+          <Entity v-bind="entity" />
         </RemovableComponentContainer>
       </div>
       <div class="repositories typeContainer">
@@ -79,12 +82,12 @@
           Add
         </button>
         <RemovableComponentContainer
-            v-for="(repository, idx) in architecture.repositories"
-            :remove="architecture.removeRepository"
-            :idx="idx"
-            :key="repository.iName"
+          v-for="(repository, idx) in architecture.repositories"
+          :remove="architecture.removeRepository"
+          :idx="idx"
+          :key="repository.iName"
         >
-          <RepositoryPort v-bind="repository"/>
+          <RepositoryPort v-bind="repository" />
         </RemovableComponentContainer>
       </div>
       <div class="outputAdapters typeContainer">
@@ -92,12 +95,12 @@
           Add
         </button>
         <RemovableComponentContainer
-            v-for="(outputAdapter, idx) in architecture.outputAdapters"
-            :remove="architecture.removeOutputAdapter"
-            :idx="idx"
-            :key="outputAdapter.name"
+          v-for="(outputAdapter, idx) in architecture.outputAdapters"
+          :remove="architecture.removeOutputAdapter"
+          :idx="idx"
+          :key="outputAdapter.name"
         >
-          <OutputAdapter v-bind="outputAdapter"/>
+          <OutputAdapter v-bind="outputAdapter" />
         </RemovableComponentContainer>
       </div>
     </div>
@@ -105,7 +108,7 @@
 </template>
 
 <script>
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import UseCasePortVue from "./components/UseCasePort.vue";
 import RepositoryPortVue from "./components/RepositoryPort.vue";
 import InputAdapterVue from "./components/InputAdapter.vue";
@@ -113,7 +116,7 @@ import OutputAdapterVue from "./components/OutputAdapter.vue";
 import MenuHeaderVue from "./components/MenuHeader.vue";
 import ServiceVue from "./components/Service.vue";
 import EntityVue from "./components/Entity.vue";
-import {useArchStore} from "./stores/architecture";
+import { useArchStore } from "./stores/architecture";
 import RemovableComponentContainer from "./components/RemovableComponentContainer.vue";
 import SideBarVue from "./components/SideBar.vue";
 
@@ -128,11 +131,11 @@ export default defineComponent({
     OutputAdapter: OutputAdapterVue,
     Service: ServiceVue,
     Entity: EntityVue,
-    SideBar: SideBarVue
+    SideBar: SideBarVue,
   },
   setup() {
     const architecture = useArchStore();
-    window.stores = {architecture};
+    window.stores = { architecture };
     return {
       architecture,
     };
@@ -141,7 +144,8 @@ export default defineComponent({
 </script>
 
 <style>
-html, body {
+html,
+body {
   height: 100%;
 }
 #app {
@@ -172,10 +176,9 @@ html, body {
 #sideBar {
   flex: 1;
   height: 100%;
-
 }
 
-#containers {;
+#containers {
   flex: 10;
   display: flex;
   flex-direction: row;
