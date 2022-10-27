@@ -3,9 +3,8 @@
     <MenuHeader />
   </div>
   <div id="belowFold">
-    <div id="sideBar" :style="{ backgroundColor: architecture.getColor }">
-      <SideBar />
-    </div>
+    <SideBar :style="{ flex: 1, backgroundColor: architecture.getColor }" />
+
     <div id="containers">
       <div class="inputAdapters typeContainer">
         <button @click="architecture.setInputDisplay('addInputAdapter')">
@@ -126,6 +125,7 @@ html,
 body {
   height: 100%;
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -137,6 +137,7 @@ body {
   justify-content: space-around;
   height: 100%;
 }
+
 #header {
   display: flex;
   flex-direction: row;
@@ -149,14 +150,6 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   height: 100%;
-}
-
-#sideBar {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 #containers {
