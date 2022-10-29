@@ -1,10 +1,7 @@
 <template>
-  <div id="header">
-    <MenuHeader />
-  </div>
+  <MenuHeader id="header" />
   <div id="belowFold">
-    <SideBar :style="{ flex: 1 }" />
-
+    <SideBar id="sidebar" />
     <div id="containers">
       <div class="inputAdapters typeContainer">
         <RemovableComponentContainer
@@ -134,15 +131,24 @@ body {
 #belowFold {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   height: 100%;
+  width: 100%;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  font-size: 1em;
 }
 
 #containers {
-  flex: 10;
+  flex: 1;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  overflow-x: scroll;
 }
 
 .typeContainer > div {
@@ -152,8 +158,11 @@ body {
 }
 
 .typeContainer {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 20%;
+  margin: 10px 10px;
 }
 
 .inputAdapters > div {

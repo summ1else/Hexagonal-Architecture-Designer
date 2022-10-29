@@ -19,14 +19,12 @@ export default {
 </script>
 
 <style scoped>
-button.block {
-  width: 40%;
+button {
+  width: 10%;
   position: relative;
-  left: 30%;
-}
-button.inline {
-  padding: 2px;
-  display: inline;
+  left: 90%;
+  margin-bottom: 10px;
+  display: block;
 }
 i {
   cursor: pointer;

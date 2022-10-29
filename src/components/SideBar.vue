@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar" :style="{ backgroundColor: architecture.getColor }">
+  <div :style="{ backgroundColor: architecture.getColor }">
     <div id="sidebar-main">
       <div class="editor">
         <AddInputAdapter
@@ -155,12 +155,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-#sidebar {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-
 #sidebar-main {
   height: 100%;
   display: flex;
@@ -169,8 +163,13 @@ export default defineComponent({
   flex: 10;
 }
 
+#sidebar-buttons {
+  background-color: black;
+}
+
 .sidebar-button {
-  width: 0;
+  width: 50px;
+  //display: none;
 }
 
 .sidebar-link {

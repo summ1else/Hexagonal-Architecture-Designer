@@ -45,7 +45,7 @@ const selectedContainerOption = ref("");
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 1.5em;
+  font-size: 1.1em;
   margin: 0 10px;
 }
 
@@ -53,6 +53,7 @@ const selectedContainerOption = ref("");
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 #navLinks > span {
