@@ -145,37 +145,21 @@ export default defineComponent({
   flex: 10;
 }
 
-#sidebar-buttons {
-  border-color: black;
-  border-width: 0 1px;
-  border-style: solid;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 2em;
-  height: 75%;
-}
-
 .sidebar-button {
-  flex: 1;
-}
-
-.sidebar-button:not(:last-child) {
-  margin-bottom: 0.5em;
+  display: table;
 }
 
 .sidebar-link {
-  width: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 50% 0;
+  height: 0;
 }
 
 .sidebar-link > a {
-  //height: 100%;
   display: block;
-  transform: rotate(270deg);
+  transform-origin: top left;
+  transform: rotate(-90deg) translate(-100%);
+  margin-top: -50%;
+  white-space: nowrap;
 }
 
 .typeContainer > div {
