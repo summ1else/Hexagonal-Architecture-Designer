@@ -3,13 +3,10 @@
     <MenuHeader />
   </div>
   <div id="belowFold">
-    <SideBar :style="{ flex: 1, backgroundColor: architecture.getColor }" />
+    <SideBar :style="{ flex: 1 }" />
 
     <div id="containers">
       <div class="inputAdapters typeContainer">
-        <button @click="architecture.setInputDisplay('addInputAdapter')">
-          Add
-        </button>
         <RemovableComponentContainer
           v-for="(inputAdapter, idx) in architecture.inputAdapters"
           :remove="architecture.removeInputAdapter"
@@ -20,9 +17,6 @@
         </RemovableComponentContainer>
       </div>
       <div class="inputPorts typeContainer">
-        <button @click="architecture.setInputDisplay('addInputPort')">
-          Add
-        </button>
         <RemovableComponentContainer
           v-for="(inputPort, idx) in architecture.inputPorts"
           :remove="architecture.removeInputPort"
@@ -33,7 +27,6 @@
         </RemovableComponentContainer>
       </div>
       <div class="services typeContainer">
-        <button @click="architecture.setInputDisplay('addService')">Add</button>
         <RemovableComponentContainer
           v-for="(service, idx) in architecture.services"
           :remove="architecture.removeService"
@@ -44,7 +37,6 @@
         </RemovableComponentContainer>
       </div>
       <div class="entities typeContainer">
-        <button @click="architecture.setInputDisplay('addEntity')">Add</button>
         <RemovableComponentContainer
           v-for="(entity, idx) in architecture.entities"
           :remove="architecture.removeEntity"
@@ -55,9 +47,6 @@
         </RemovableComponentContainer>
       </div>
       <div class="outputPorts typeContainer">
-        <button @click="architecture.setInputDisplay('addOutputPort')">
-          Add
-        </button>
         <RemovableComponentContainer
           v-for="(outputPort, idx) in architecture.outputPorts"
           :remove="architecture.removeOutputPort"
@@ -68,9 +57,6 @@
         </RemovableComponentContainer>
       </div>
       <div class="outputAdapters typeContainer">
-        <button @click="architecture.setInputDisplay('addOutputAdapter')">
-          Add
-        </button>
         <RemovableComponentContainer
           v-for="(outputAdapter, idx) in architecture.outputAdapters"
           :remove="architecture.removeOutputAdapter"

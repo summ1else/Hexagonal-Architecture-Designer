@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar">
+  <div id="sidebar" :style="{ backgroundColor: architecture.getColor }">
     <div id="sidebar-main">
       <div class="editor">
         <AddInputAdapter
@@ -68,32 +68,56 @@
     <div id="sidebar-buttons">
       <div class="sidebar-button">
         <div class="sidebar-link">
-          <a class="btn btn-primary btn-sm" href="#">InputAdapter</a>
+          <a
+            class="btn btn-primary btn-sm"
+            @click="architecture.setInputDisplay('addInputAdapter')"
+            >InputAdapter</a
+          >
         </div>
       </div>
       <div class="sidebar-button">
         <div class="sidebar-link">
-          <a class="btn btn-primary btn-sm" href="#">InputPort</a>
+          <a
+            class="btn btn-primary btn-sm"
+            @click="architecture.setInputDisplay('addInputPort')"
+            >InputPort</a
+          >
         </div>
       </div>
       <div class="sidebar-button">
         <div class="sidebar-link">
-          <a class="btn btn-primary btn-sm" href="#">Service</a>
+          <a
+            class="btn btn-primary btn-sm"
+            @click="architecture.setInputDisplay('addService')"
+            >Service</a
+          >
         </div>
       </div>
       <div class="sidebar-button">
         <div class="sidebar-link">
-          <a class="btn btn-primary btn-sm" href="#">Entity</a>
+          <a
+            class="btn btn-primary btn-sm"
+            @click="architecture.setInputDisplay('addEntity')"
+            >Entity</a
+          >
         </div>
       </div>
       <div class="sidebar-button">
         <div class="sidebar-link">
-          <a class="btn btn-primary btn-sm" href="#">OutputPort</a>
+          <a
+            class="btn btn-primary btn-sm"
+            @click="architecture.setInputDisplay('addOutputPort')"
+            >OutputPort</a
+          >
         </div>
       </div>
       <div class="sidebar-button">
         <div class="sidebar-link">
-          <a class="btn btn-primary btn-sm" href="#">OutputAdapter</a>
+          <a
+            class="btn btn-primary btn-sm"
+            @click="architecture.setInputDisplay('addOutputAdapter')"
+            >OutputAdapter</a
+          >
         </div>
       </div>
     </div>
@@ -146,20 +170,22 @@ export default defineComponent({
 }
 
 .sidebar-button {
-  display: table;
+  width: 0;
 }
 
 .sidebar-link {
-  padding: 50% 0;
-  height: 0;
+  position: relative;
+  padding: 2px;
+  margin: 2px;
+  width: 0;
 }
 
 .sidebar-link > a {
-  display: block;
-  transform-origin: top left;
-  transform: rotate(-90deg) translate(-100%);
-  margin-top: -50%;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   white-space: nowrap;
+  display: inline-block;
+  overflow: visible;
 }
 
 .typeContainer > div {
@@ -189,7 +215,7 @@ input {
 #editor-details {
   margin: 10px;
   padding-top: 10px;
-  border-top: 2px solid black;
+  border-top: 3px solid black;
   height: 25%;
   overflow-y: auto;
 }
