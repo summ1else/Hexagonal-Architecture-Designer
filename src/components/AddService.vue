@@ -5,7 +5,7 @@
       <input id="newServicePack" v-model="newServicePack" />
     </div>
     <div>
-      <label for="newServiceName">Service Name </label>
+      <label for="newServiceName">Service Name </label><br />
       <input id="newServiceName" v-model="newServiceName" />
     </div>
     <div>
@@ -15,7 +15,6 @@
         :multiple="true"
         :options="inputPortNames"
       >
-        <!-- TODO implement a computed property instead -->
       </VueMultiselect>
     </div>
     <div>

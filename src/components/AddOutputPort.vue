@@ -5,11 +5,11 @@
       <input id="newOutputPortPack" v-model="newOutputPortPack" />
     </div>
     <div>
-      <label for="newOutputPortName">OutputPort Name </label>
+      <label for="newOutputPortName">OutputPort Name </label><br />
       <input id="newOutputPortName" v-model="newOutputPortName" />
     </div>
     <div>
-      <label for="newInputAdapterType">New Method </label>
+      <label for="newInputAdapterType">New Method </label><br />
       <input id="newInputAdapterType" v-model="newOutputPortMethod" />
     </div>
     <div>

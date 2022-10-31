@@ -5,11 +5,11 @@
       <input id="newOutputAdapterPack" v-model="newOutputAdapterPack" />
     </div>
     <div>
-      <label for="newOutputAdapterName">OutputAdapter Name </label>
+      <label for="newOutputAdapterName">OutputAdapter Name </label><br />
       <input id="newOutputAdapterName" v-model="newOutputAdapterName" />
     </div>
     <div>
-      <label for="newOutputAdapterType">OutputAdapter Type </label>
+      <label for="newOutputAdapterType">OutputAdapter Type </label><br />
       <input id="newOutputAdapterType" v-model="newOutputAdapterType" />
     </div>
     <div>

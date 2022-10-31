@@ -37,7 +37,7 @@
             architecture.getUncalledInputPorts.length !== 0
           "
         >
-          <span class="h4">Uncalled InputPorts</span>
+          <span>Uncalled InputPorts</span>
           <ul>
             <li
               v-for="inputPort in architecture.getUncalledInputPorts"
@@ -53,7 +53,7 @@
             architecture.getUnimplementedInputPorts.length === 0
           "
         >
-          <span class="h4">Unimplemented InputPorts</span>
+          <span>Unimplemented InputPorts</span>
           <ul>
             <li
               v-for="inputPort in architecture.getUnimplementedInputPorts"
@@ -69,7 +69,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn btn-primary btn-sm"
+            class="btn pink btn-sm"
             @click="architecture.setInputDisplay('addInputAdapter')"
             >InputAdapter</a
           >
@@ -78,7 +78,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn btn-primary btn-sm"
+            class="btn cornflowerblue btn-sm"
             @click="architecture.setInputDisplay('addInputPort')"
             >InputPort</a
           >
@@ -87,7 +87,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn btn-primary btn-sm"
+            class="btn tan btn-sm"
             @click="architecture.setInputDisplay('addService')"
             >Service</a
           >
@@ -96,7 +96,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn btn-primary btn-sm"
+            class="btn lightgreen btn-sm"
             @click="architecture.setInputDisplay('addEntity')"
             >Entity</a
           >
@@ -105,7 +105,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn btn-primary btn-sm"
+            class="btn lightsalmon btn-sm"
             @click="architecture.setInputDisplay('addOutputPort')"
             >OutputPort</a
           >
@@ -114,7 +114,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn btn-primary btn-sm"
+            class="btn lightseagreen btn-sm"
             @click="architecture.setInputDisplay('addOutputAdapter')"
             >OutputAdapter</a
           >
@@ -217,5 +217,52 @@ input {
   border-top: 3px solid black;
   height: 25%;
   overflow-y: auto;
+}
+.pink {
+  background-color: pink;
+}
+
+.btn.pink:hover {
+  background-color: white;
+}
+
+.cornflowerblue {
+  background-color: cornflowerblue;
+}
+
+.btn.cornflowerblue:hover {
+  background-color: white;
+}
+
+.tan {
+  background-color: tan;
+}
+
+.btn.tan:hover {
+  background-color: white;
+}
+
+.lightgreen {
+  background-color: lightgreen;
+}
+
+.btn.lightgreen:hover {
+  background-color: white;
+}
+
+.lightsalmon {
+  background-color: lightsalmon;
+}
+
+.btn.lightsalmon:hover {
+  background-color: white;
+}
+
+.lightseagreen {
+  background-color: lightseagreen;
+}
+
+.btn.lightseagreen:hover {
+  background-color: white;
 }
 </style>

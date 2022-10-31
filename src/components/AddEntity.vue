@@ -1,15 +1,15 @@
 <template>
   <div id="addEntityDiv">
     <div>
-      <label for="newEntityPack">Package</label>
+      <label for="newEntityPack">Package</label><br />
       <input id="newEntityPack" v-model="newEntityPack" />
     </div>
     <div>
-      <label for="newEntityName">Entity Name </label>
+      <label for="newEntityName">Entity Name </label><br />
       <input id="newEntityName" v-model="newEntityName" />
     </div>
     <div>
-      <label for="newEntityField">New Field </label>
+      <label for="newEntityField">New Field </label><br />
       <input
         @keyup.enter="addField()"
         id="newEntityField"
@@ -33,7 +33,7 @@
       </ul>
     </div>
     <div>
-      <label for="newEntityMethod">New Method </label>
+      <label for="newEntityMethod">New Method </label><br />
       <input
         @keyup.enter="addMethod()"
         id="newEntityMethod"

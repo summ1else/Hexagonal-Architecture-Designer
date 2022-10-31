@@ -5,12 +5,13 @@
       <input id="newInputPortPack" v-model="newInputPortPack" />
     </div>
     <div>
-      <label for="newInputPortName">Use Input Port Name </label>
+      <label for="newInputPortName">Use Input Port Name </label><br />
       <input id="newInputPortName" v-model="newInputPortName" />
     </div>
     <div class="adderField">
-      <label for="newInputPortMethod">New Method </label>
+      <label for="newInputPortMethod">New Method </label><br />
       <input id="newInputPortMethod" v-model="newInputPortMethod" />
+      <br />
       <button class="btn btn-secondary" @click="addMethod()">Add Method</button>
     </div>
     <div>
