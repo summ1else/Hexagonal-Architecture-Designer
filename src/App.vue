@@ -3,7 +3,13 @@
   <div id="belowFold">
     <SideBar id="sidebar" />
     <div id="containers">
-      <div class="inputAdapters typeContainer">
+      <div
+        class="inputAdapters typeContainer"
+        v-show="
+          architecture.inputAdapters.length > 0 &&
+          architecture.displayed.includes('inputAdapters')
+        "
+      >
         <RemovableComponentContainer
           v-for="(inputAdapter, idx) in architecture.inputAdapters"
           :remove="architecture.removeInputAdapter"
@@ -13,7 +19,13 @@
           <InputAdapter v-bind="inputAdapter"></InputAdapter>
         </RemovableComponentContainer>
       </div>
-      <div class="inputPorts typeContainer">
+      <div
+        class="inputPorts typeContainer"
+        v-show="
+          architecture.inputPorts.length > 0 &&
+          architecture.displayed.includes('inputPorts')
+        "
+      >
         <RemovableComponentContainer
           v-for="(inputPort, idx) in architecture.inputPorts"
           :remove="architecture.removeInputPort"
@@ -23,7 +35,13 @@
           <InputPort v-bind="inputPort" />
         </RemovableComponentContainer>
       </div>
-      <div class="services typeContainer">
+      <div
+        class="services typeContainer"
+        v-show="
+          architecture.services.length > 0 &&
+          architecture.displayed.includes('services')
+        "
+      >
         <RemovableComponentContainer
           v-for="(service, idx) in architecture.services"
           :remove="architecture.removeService"
@@ -33,7 +51,13 @@
           <Service v-bind="service" />
         </RemovableComponentContainer>
       </div>
-      <div class="entities typeContainer">
+      <div
+        class="entities typeContainer"
+        v-show="
+          architecture.entities.length > 0 &&
+          architecture.displayed.includes('entities')
+        "
+      >
         <RemovableComponentContainer
           v-for="(entity, idx) in architecture.entities"
           :remove="architecture.removeEntity"
@@ -43,7 +67,13 @@
           <Entity v-bind="entity" />
         </RemovableComponentContainer>
       </div>
-      <div class="outputPorts typeContainer">
+      <div
+        class="outputPorts typeContainer"
+        v-show="
+          architecture.outputPorts.length > 0 &&
+          architecture.displayed.includes('outputPorts')
+        "
+      >
         <RemovableComponentContainer
           v-for="(outputPort, idx) in architecture.outputPorts"
           :remove="architecture.removeOutputPort"
@@ -53,7 +83,13 @@
           <OutputPortPort v-bind="outputPort" />
         </RemovableComponentContainer>
       </div>
-      <div class="outputAdapters typeContainer">
+      <div
+        class="outputAdapters typeContainer"
+        v-show="
+          architecture.outputAdapters.length > 0 &&
+          architecture.displayed.includes('outputAdapters')
+        "
+      >
         <RemovableComponentContainer
           v-for="(outputAdapter, idx) in architecture.outputAdapters"
           :remove="architecture.removeOutputAdapter"

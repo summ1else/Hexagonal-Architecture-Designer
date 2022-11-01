@@ -9,6 +9,7 @@
         class="multiselect"
         v-model="selectedContainerOption"
         :options="containerSelectorOptions"
+        @select="onSelect"
       >
       </VueMultiselect>
     </div>
@@ -24,6 +25,8 @@ export default {
 };
 </script>
 <script setup>
+import { useArchStore } from "@/stores/architecture";
+const architecture = useArchStore();
 import { ref } from "vue";
 import VueMultiselect from "vue-multiselect";
 
@@ -36,6 +39,9 @@ const containerSelectorOptions = ref([
   "Implementations",
 ]);
 const selectedContainerOption = ref("");
+const onSelect = function (option) {
+  architecture.setDisplayed(option);
+};
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>

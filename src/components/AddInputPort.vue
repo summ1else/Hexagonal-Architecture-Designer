@@ -5,7 +5,7 @@
       <input id="newInputPortPack" v-model="newInputPortPack" />
     </div>
     <div>
-      <label for="newInputPortName">Use Input Port Name </label><br />
+      <label for="newInputPortName">Input Port Name</label><br />
       <input id="newInputPortName" v-model="newInputPortName" />
     </div>
     <div class="adderField">

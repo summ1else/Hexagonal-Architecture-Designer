@@ -49,8 +49,19 @@ export const useArchStore = defineStore({
         adapterType: "db",
       },
     ]),
+    displayed: useStorage("displayed", [
+      "outputAdapters",
+      "outputPorts",
+      "services",
+      "entities",
+      "inputPorts",
+      "inputAdapters",
+    ]),
   }),
   getters: {
+    getDisplayed(state) {
+      return state.displayed;
+    },
     getAllInputPortNames(state) {
       return state.inputPorts.map((inputPort) => inputPort.iName);
     },
@@ -127,6 +138,42 @@ export const useArchStore = defineStore({
     },
   },
   actions: {
+    setDisplayed(type) {
+      console.log(type);
+      const all = [
+        "outputAdapters",
+        "outputPorts",
+        "services",
+        "entities",
+        "inputPorts",
+        "inputAdapters",
+      ];
+      const domain = ["outputPorts", "services", "entities", "inputPorts"];
+      const driving = ["inputAdapters", "inputPorts", "services", "entities"];
+      const driven = ["outputAdapters", "outputPorts", "services", "entities"];
+      const interfaces = ["outputPorts", "inputPorts"];
+      const implementations = ["outputAdapters", "inputAdapters", "services"];
+      switch (type) {
+        case "All":
+          this.displayed.splice(0, this.displayed.length, ...all);
+          break;
+        case "Domain (Application)":
+          this.displayed.splice(0, this.displayed.length, ...domain);
+          break;
+        case "Driving Side":
+          this.displayed.splice(0, this.displayed.length, ...driving);
+          break;
+        case "Driven Side":
+          this.displayed.splice(0, this.displayed.length, ...driven);
+          break;
+        case "Interfaces":
+          this.displayed.splice(0, this.displayed.length, ...interfaces);
+          break;
+        case "Implementations":
+          this.displayed.splice(0, this.displayed.length, ...implementations);
+          break;
+      }
+    },
     addInputAdapter({ pack, name, type, calling }) {
       this.inputAdapters.push({
         pack,
