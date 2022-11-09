@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <span
+      ><font-awesome-icon icon="fa-solid fa-arrows-up-down-left-right"
+    /></span>
     <span>Package: {{ pack }}</span>
     <span class="name">{{ name }}</span>
     <br />

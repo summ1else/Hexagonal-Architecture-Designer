@@ -1,6 +1,9 @@
 <template>
   <div id="addOutputPortDiv">
     <div>
+      <font-awesome-icon icon="fa-solid fa-arrows-up-to-line" />
+    </div>
+    <div>
       <label for="newOutputPortPack">Package</label><br />
       <input id="newOutputPortPack" v-model="newOutputPortPack" />
     </div>

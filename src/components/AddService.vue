@@ -1,5 +1,6 @@
 <template>
   <div id="addServiceDiv">
+    <div><font-awesome-icon icon="fa-solid fa-arrows-to-circle" /></div>
     <div>
       <label for="newServicePack">Package</label><br />
       <input id="newServicePack" v-model="newServicePack" />

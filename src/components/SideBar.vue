@@ -71,8 +71,8 @@
           <a
             class="btn pink btn-sm"
             @click="architecture.setInputDisplay('addInputAdapter')"
-            >InputAdapter</a
-          >
+            >InputAdapter <font-awesome-icon icon="fa-solid fa-arrow-down"
+          /></a>
         </div>
       </div>
       <div class="sidebar-button">
@@ -80,8 +80,9 @@
           <a
             class="btn cornflowerblue btn-sm"
             @click="architecture.setInputDisplay('addInputPort')"
-            >InputPort</a
-          >
+            >InputPort
+            <font-awesome-icon icon="fa-solid fa-arrows-down-to-line" />
+          </a>
         </div>
       </div>
       <div class="sidebar-button">
@@ -89,8 +90,9 @@
           <a
             class="btn tan btn-sm"
             @click="architecture.setInputDisplay('addService')"
-            >Service</a
-          >
+            >Service
+            <font-awesome-icon icon="fa-solid fa-arrows-to-circle" />
+          </a>
         </div>
       </div>
       <div class="sidebar-button">
@@ -98,8 +100,9 @@
           <a
             class="btn lightgreen btn-sm"
             @click="architecture.setInputDisplay('addEntity')"
-            >Entity</a
-          >
+            >Entity
+            <font-awesome-icon icon="fa-solid fa-arrows-up-down-left-right" />
+          </a>
         </div>
       </div>
       <div class="sidebar-button">
@@ -107,8 +110,9 @@
           <a
             class="btn lightsalmon btn-sm"
             @click="architecture.setInputDisplay('addOutputPort')"
-            >OutputPort</a
-          >
+            >OutputPort
+            <font-awesome-icon icon="fa-solid fa-arrows-up-to-line" />
+          </a>
         </div>
       </div>
       <div class="sidebar-button">
@@ -116,8 +120,9 @@
           <a
             class="btn lightseagreen btn-sm"
             @click="architecture.setInputDisplay('addOutputAdapter')"
-            >OutputAdapter</a
-          >
+            >OutputAdapter
+            <font-awesome-icon icon="fa-solid fa-arrow-up" />
+          </a>
         </div>
       </div>
     </div>
@@ -155,6 +160,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
+svg {
+  transform: rotate(180deg);
+  font-size: 1.2em;
+}
+
 #sidebar-main {
   height: 100%;
   display: flex;

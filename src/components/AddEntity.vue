@@ -1,6 +1,9 @@
 <template>
   <div id="addEntityDiv">
     <div>
+      <font-awesome-icon icon="fa-solid fa-arrows-up-down-left-right" />
+    </div>
+    <div>
       <label for="newEntityPack">Package</label><br />
       <input id="newEntityPack" v-model="newEntityPack" />
     </div>

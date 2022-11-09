@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span><font-awesome-icon icon="fa-solid fa-arrows-up-to-line" /></span>
     <span class="name">{{ iName }}</span>
     <br />
     <ul class="methods">

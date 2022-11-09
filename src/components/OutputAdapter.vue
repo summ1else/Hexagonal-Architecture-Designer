@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span><font-awesome-icon icon="fa-solid fa-arrow-up" /></span>
     <span class="name">{{ name }}</span>
     <br />
     {{ adapterType }}

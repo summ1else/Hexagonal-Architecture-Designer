@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span><font-awesome-icon icon="fa-solid fa-arrows-down-to-line" /></span>
     <span>Package: {{ pack }}</span>
     <span class="name">{{ iName }}</span>
     <ul class="methods">

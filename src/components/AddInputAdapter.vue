@@ -1,6 +1,9 @@
 <template>
   <div id="addInputAdapterDiv">
     <div>
+      <font-awesome-icon icon="fa-solid fa-arrow-down" />
+    </div>
+    <div>
       <label for="newInputAdapterPack">Package</label><br />
       <input id="newInputAdapterPack" v-model="newInputAdapterPack" />
     </div>
