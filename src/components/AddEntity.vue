@@ -76,10 +76,17 @@
     </div>
   </div>
 </template>
-
 <script>
+import LeaderLine from "leader-line-vue";
+
 export default {
   name: "AddEntity",
+  mounted() {
+    LeaderLine.setLine(
+      document.getElementById("newEntityName"),
+      document.getElementById("newEntityPack")
+    );
+  },
 };
 </script>
 
