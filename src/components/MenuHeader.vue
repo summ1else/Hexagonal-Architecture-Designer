@@ -1,7 +1,7 @@
 <template>
   <div id="menu">
     <div id="navLinks">
-      <span>Design</span>
+      <span><router-link to="/">Design</router-link></span>
       <span>Analysis</span>
       <span>Export</span>
       <span>Dashboard</span>

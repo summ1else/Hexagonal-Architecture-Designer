@@ -69,7 +69,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn pink btn-sm"
+            class="btn btn-primary btn-sm"
             @click="architecture.setInputDisplay('addInputAdapter')"
             >InputAdapter <font-awesome-icon icon="fa-solid fa-arrow-down"
           /></a>
@@ -78,7 +78,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn cornflowerblue btn-sm"
+            class="btn btn-primary btn-sm"
             @click="architecture.setInputDisplay('addInputPort')"
             >InputPort
             <font-awesome-icon icon="fa-solid fa-arrows-down-to-line" />
@@ -88,7 +88,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn tan btn-sm"
+            class="btn btn-primary btn-sm"
             @click="architecture.setInputDisplay('addService')"
             >Service
             <font-awesome-icon icon="fa-solid fa-arrows-to-circle" />
@@ -98,7 +98,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn lightgreen btn-sm"
+            class="btn btn-primary btn-sm"
             @click="architecture.setInputDisplay('addEntity')"
             >Entity
             <font-awesome-icon icon="fa-solid fa-arrows-up-down-left-right" />
@@ -108,7 +108,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn lightsalmon btn-sm"
+            class="btn btn-primary btn-sm"
             @click="architecture.setInputDisplay('addOutputPort')"
             >OutputPort
             <font-awesome-icon icon="fa-solid fa-arrows-up-to-line" />
@@ -118,7 +118,7 @@
       <div class="sidebar-button">
         <div class="sidebar-link">
           <a
-            class="btn lightseagreen btn-sm"
+            class="btn btn-primary btn-sm"
             @click="architecture.setInputDisplay('addOutputAdapter')"
             >OutputAdapter
             <font-awesome-icon icon="fa-solid fa-arrow-up" />
@@ -174,7 +174,7 @@ svg {
 }
 
 #sidebar-buttons {
-  background-color: black;
+  background-color: antiquewhite;
 }
 
 .sidebar-button {
@@ -227,52 +227,5 @@ input {
   border-top: 3px solid black;
   height: 25%;
   overflow-y: auto;
-}
-.pink {
-  background-color: pink;
-}
-
-.btn.pink:hover {
-  background-color: white;
-}
-
-.cornflowerblue {
-  background-color: cornflowerblue;
-}
-
-.btn.cornflowerblue:hover {
-  background-color: white;
-}
-
-.tan {
-  background-color: tan;
-}
-
-.btn.tan:hover {
-  background-color: white;
-}
-
-.lightgreen {
-  background-color: lightgreen;
-}
-
-.btn.lightgreen:hover {
-  background-color: white;
-}
-
-.lightsalmon {
-  background-color: lightsalmon;
-}
-
-.btn.lightsalmon:hover {
-  background-color: white;
-}
-
-.lightseagreen {
-  background-color: lightseagreen;
-}
-
-.btn.lightseagreen:hover {
-  background-color: white;
 }
 </style>

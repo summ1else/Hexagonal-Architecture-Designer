@@ -120,18 +120,6 @@ export const useArchStore = defineStore({
     },
     getColor() {
       switch (this.inputDisplay) {
-        case "addInputAdapter":
-          return "pink";
-        case "addInputPort":
-          return "cornflowerblue";
-        case "addService":
-          return "tan";
-        case "addEntity":
-          return "lightgreen";
-        case "addOutputPort":
-          return "lightsalmon";
-        case "addOutputAdapter":
-          return "lightseagreen";
         default:
           return "white";
       }

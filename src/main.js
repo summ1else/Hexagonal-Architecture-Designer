@@ -28,8 +28,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap";
 
+import { createRouter, createWebHashHistory } from "vue-router";
+import DesignView from "@/components/DesignView.vue";
+
+const routes = [{ path: "/", component: DesignView }];
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
+
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)
   .use(GlobalCmComponent)
   .use(createPinia())
+  .use(router)
   .mount("#app");
