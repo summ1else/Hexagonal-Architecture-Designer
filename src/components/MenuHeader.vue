@@ -2,7 +2,7 @@
   <div id="menu">
     <div id="navLinks">
       <span><router-link to="/">Design</router-link></span>
-      <span>Analysis</span>
+      <span><router-link to="/analysis">Analysis</router-link></span>
       <span>Export</span>
       <span>Dashboard</span>
       <VueMultiselect

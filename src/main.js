@@ -30,8 +30,12 @@ import "bootstrap";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 import DesignView from "@/components/DesignView.vue";
+import AnalysisView from "@/components/AnalysisView.vue";
 
-const routes = [{ path: "/", component: DesignView }];
+const routes = [
+  { path: "/", component: DesignView },
+  { path: "/analysis", component: AnalysisView },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),

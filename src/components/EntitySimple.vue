@@ -11,34 +11,13 @@
 
 <script>
 export default {
-  name: "Entity",
+  name: "EntitySimple",
 };
 </script>
 <script setup>
-import { computed } from "vue";
-import CodeDisplay from "@/components/CodeDisplay.vue";
-
-const props = defineProps({
+defineProps({
   pack: String,
   name: String,
-  fields: Array,
-  methods: Array,
-});
-const generatedCode = computed(() => {
-  const methods = props.methods
-    .map((method) => {
-      method = method.trim();
-      return method;
-    })
-    .join("\r\n\r\n  ");
-  return `
-package ${props.pack}
-
-public class ${props.name} {
-
-  ${methods}
-
-}`;
 });
 </script>
 
@@ -50,9 +29,5 @@ div {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-}
-.fields,
-.methods {
-  font-family: "Courier New";
 }
 </style>
