@@ -43,7 +43,7 @@ const generatedCode = computed(() => {
     .join(" {\r\n\r\n  }\r\n\r\n  ")
     .concat(" {\r\n\r\n  }");
 
-  const fields = props.implementing
+  const fields = props.calling
     .map((called) => {
       return (
         "private " +
