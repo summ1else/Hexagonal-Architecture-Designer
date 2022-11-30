@@ -10,11 +10,22 @@
       <input id="newServiceName" v-model="newServiceName" />
     </div>
     <div>
+      <p>Implementing</p>
       <VueMultiselect
         class="multiselect"
         v-model="newServiceImplementing"
         :multiple="true"
         :options="inputPortNames"
+      >
+      </VueMultiselect>
+    </div>
+    <div>
+      <p>Calling</p>
+      <VueMultiselect
+        class="multiselect"
+        v-model="newServiceCalling"
+        :multiple="true"
+        :options="outputPortNames"
       >
       </VueMultiselect>
     </div>
@@ -26,6 +37,7 @@
             pack: newServicePack,
             name: newServiceName,
             implementing: newServiceImplementing,
+            calling: newServiceCalling,
           })
         "
       >
@@ -48,9 +60,11 @@ import VueMultiselect from "vue-multiselect";
 const newServicePack = ref("");
 const newServiceName = ref("");
 const newServiceImplementing = ref([]);
+const newServiceCalling = ref([]);
 const props = defineProps({
   addService: Function,
   inputPortNames: Array,
+  outputPortNames: Array,
 });
 console.log(props);
 </script>

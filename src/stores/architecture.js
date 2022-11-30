@@ -185,8 +185,8 @@ export const useArchStore = defineStore({
         methods,
       });
     },
-    addOutputPort({ iName, methods }) {
-      this.outputPorts.push({ iName, methods });
+    addOutputPort({ pack, iName, methods }) {
+      this.outputPorts.push({ pack, iName, methods });
     },
     addOutputAdapter({ pack, name, calling, adapterType }) {
       this.outputAdapters.push({
@@ -196,8 +196,8 @@ export const useArchStore = defineStore({
         adapterType,
       });
     },
-    addService({ pack, name, implementing }) {
-      this.services.push({ pack, name, implementing });
+    addService({ pack, name, implementing, calling }) {
+      this.services.push({ pack, name, implementing, calling });
     },
     removeInputAdapter(idx) {
       this.inputAdapters.splice(idx, 1);

@@ -36,6 +36,12 @@ const props = defineProps({
   methods: Array,
 });
 const generatedCode = computed(() => {
+  const fields = props.fields
+    .map((field) => {
+      field = "\t" + field.trim();
+      return field;
+    })
+    .join("\r\n");
   const methods = props.methods
     .map((method) => {
       method = method.trim();
@@ -46,6 +52,8 @@ const generatedCode = computed(() => {
 package ${props.pack}
 
 public class ${props.name} {
+
+  ${fields}
 
   ${methods}
 

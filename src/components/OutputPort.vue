@@ -17,7 +17,6 @@ export default {
 </script>
 <script setup>
 import { computed } from "vue";
-import { useArchStore } from "@/stores/architecture";
 import CodeDisplay from "@/components/CodeDisplay.vue";
 
 const props = defineProps({
@@ -31,30 +30,11 @@ const generatedCode = computed(() => {
       method = method.trim();
       return method;
     })
-    .map((method) => {
-      const methodName = method.substring(0, method.indexOf("("));
-      // TODO: Properly handle multiple parms
-      const methodParms = method
-        .substring(method.indexOf("(") + 1, method.indexOf(")"))
-        .trim();
-      console.log("methodParms", methodParms);
-      const methodWithoutType = method
-        .substring(0, method.indexOf("(") + 1)
-        .concat(methodParms.substring(methodParms.indexOf(" ") + 1))
-        .concat(method.substring(method.indexOf(")")));
-      console.log("methodWithoutType", methodWithoutType);
-      return `public void calling${
-        methodName.charAt(0).toUpperCase() + methodName.slice(1)
-      }(${methodParms}) `
-        .concat("{\r\n    ")
-        .concat(methodWithoutType)
-        .concat("\r\n  }");
-    })
     .join("\r\n\r\n  ");
   return `
 package ${props.pack}
 
-public class ${props.name} {
+public class ${props.iName} {
 
   ${methods}
 

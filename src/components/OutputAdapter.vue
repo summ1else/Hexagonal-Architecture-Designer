@@ -27,6 +27,7 @@ import CodeDisplay from "@/components/CodeDisplay.vue";
 const archStore = useArchStore();
 
 const props = defineProps({
+  pack: String,
   name: String,
   calling: Array,
   adapterType: String,
@@ -35,35 +36,35 @@ const props = defineProps({
 const generatedCode = computed(() => {
   const methods = props.calling
     .flatMap((name) => archStore.getOutputPortByName(name)?.methods)
-    .filter((n) => n)
     .map((method) => {
       method = method.trim();
+      if (method.indexOf(";") === method.length - 1) {
+        method = method.substring(0, method.length - 1);
+        console.log("Found", method);
+      }
       return method;
     })
-    .map((method) => {
-      const methodName = method.substring(0, method.indexOf("("));
-      // TODO: Properly handle multiple parms
-      const methodParms = method
-        .substring(method.indexOf("(") + 1, method.indexOf(")"))
-        .trim();
-      console.log("methodParms", methodParms);
-      const methodWithoutType = method
-        .substring(0, method.indexOf("(") + 1)
-        .concat(methodParms.substring(methodParms.indexOf(" ") + 1))
-        .concat(method.substring(method.indexOf(")")));
-      console.log("methodWithoutType", methodWithoutType);
-      return `public void calling${
-        methodName.charAt(0).toUpperCase() + methodName.slice(1)
-      }(${methodParms}) `
-        .concat("{\r\n    ")
-        .concat(methodWithoutType)
-        .concat("\r\n  }");
+    .join(" {\r\n\r\n  }\r\n\r\n  ")
+    .concat(" {\r\n\r\n  }");
+
+  const fields = props.calling
+    .map((called) => {
+      return (
+        "private " +
+        called.trim() +
+        " " +
+        called.trim().charAt(0).toLowerCase() +
+        called.trim().slice(1) +
+        ";"
+      );
     })
-    .join("\r\n\r\n  ");
+    .join("\r\n");
   return `
 package ${props.pack}
 
-public class ${props.name} {
+public class ${props.name} implements ${props.calling.join(", ")} {
+
+  ${fields}
 
   ${methods}
 

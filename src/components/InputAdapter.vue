@@ -34,36 +34,57 @@ const props = defineProps({
 });
 const generatedCode = computed(() => {
   const methods = props.calling
-    .flatMap((name) => archStore.getInputPortByName(name)?.methods)
-    .filter((n) => n)
-    .map((method) => {
-      method = method.trim();
-      return method;
+    .map((name) => archStore.getInputPortByName(name))
+    .map((inputPort) => {
+      return inputPort.methods
+        .map((method) => {
+          const methodName = method
+            .trim()
+            .substring(method.indexOf(" ") + 1, method.indexOf("("));
+          // TODO: Properly handle multiple parms
+          const methodParms = method
+            .substring(method.indexOf("(") + 1, method.indexOf(")"))
+            .trim();
+          console.log("methodParms", methodParms);
+          const methodWithoutType = method
+            .substring(method.indexOf(" ") + 1, method.indexOf("(") + 1)
+            .concat(methodParms.substring(methodParms.indexOf(" ") + 1))
+            .concat(method.substring(method.indexOf(")")));
+          console.log("methodWithoutType", methodWithoutType);
+          return `public void calling${
+            methodName.charAt(0).toUpperCase() + methodName.slice(1)
+          }(${methodParms}) `
+            .concat("{\r\n    ")
+            .concat(
+              inputPort.iName.charAt(0).toLowerCase() +
+                inputPort.iName.slice(1) +
+                "."
+            )
+            .concat(methodWithoutType)
+            .concat("\r\n  }");
+        })
+        .join("\r\n\r\n  ");
+    });
+
+  const fields = props.calling
+    .map((called) => {
+      return (
+        "private " +
+        called.trim() +
+        " " +
+        called.trim().charAt(0).toLowerCase() +
+        called.trim().slice(1) +
+        ";"
+      );
     })
-    .map((method) => {
-      const methodName = method.substring(0, method.indexOf("("));
-      // TODO: Properly handle multiple parms
-      const methodParms = method
-        .substring(method.indexOf("(") + 1, method.indexOf(")"))
-        .trim();
-      console.log("methodParms", methodParms);
-      const methodWithoutType = method
-        .substring(0, method.indexOf("(") + 1)
-        .concat(methodParms.substring(methodParms.indexOf(" ") + 1))
-        .concat(method.substring(method.indexOf(")")));
-      console.log("methodWithoutType", methodWithoutType);
-      return `public void calling${
-        methodName.charAt(0).toUpperCase() + methodName.slice(1)
-      }(${methodParms}) `
-        .concat("{\r\n    ")
-        .concat(methodWithoutType)
-        .concat("\r\n  }");
-    })
-    .join("\r\n\r\n  ");
+    .join("\r\n");
   return `
 package ${props.pack}
 
 public class ${props.name} {
+
+  ${fields}
+
 
   ${methods}
 

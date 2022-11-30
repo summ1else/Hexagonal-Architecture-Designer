@@ -37,6 +37,7 @@
         class="btn btn-primary"
         @click="
           addOutputPort({
+            pack: newOutputPortPack,
             iName: newOutputPortName,
             methods: newOutputPortMethods,
           })

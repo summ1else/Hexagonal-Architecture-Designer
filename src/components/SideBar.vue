@@ -15,6 +15,7 @@
           v-show="architecture.inputDisplay === 'addService'"
           :add-service="architecture.addService"
           :input-port-names="architecture.getAllInputPortNames"
+          :output-port-names="architecture.getAllOutputPortNames"
         />
         <AddEntity
           v-show="architecture.inputDisplay === 'addEntity'"
