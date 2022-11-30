@@ -51,7 +51,7 @@
         <div
           v-show="
             architecture.inputDisplay === 'addService' &&
-            architecture.getUnimplementedInputPorts.length === 0
+            architecture.getUnimplementedInputPorts.length > 0
           "
         >
           <span>Unimplemented InputPorts</span>
@@ -61,6 +61,22 @@
               :key="inputPort"
             >
               {{ inputPort }}
+            </li>
+          </ul>
+        </div>
+        <div
+          v-show="
+            architecture.inputDisplay === 'addService' &&
+            architecture.getUncalledOutputPorts.length > 0
+          "
+        >
+          <span>Uncalled OutputPorts</span>
+          <ul>
+            <li
+              v-for="outputPort in architecture.getUncalledOutputPorts"
+              :key="outputPort"
+            >
+              {{ outputPort }}
             </li>
           </ul>
         </div>

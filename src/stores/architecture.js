@@ -118,6 +118,24 @@ export const useArchStore = defineStore({
       console.log("uncalled", uncalledInputPorts);
       return uncalledInputPorts;
     },
+    getCalledOutputPorts(state) {
+      if (state.services.length === 0) {
+        return [];
+      }
+      let calledOutputPorts = this.getAllOutputPortNames.filter(
+        (outputPort) =>
+          state.services.filter((service) =>
+            service.calling.includes(outputPort)
+          ).length > 0
+      );
+      return calledOutputPorts;
+    },
+    getUncalledOutputPorts() {
+      let uncalledOutputPorts = this.getAllOutputPortNames.filter(
+        (name) => !this.getCalledOutputPorts.includes(name)
+      );
+      return uncalledOutputPorts;
+    },
     getColor() {
       switch (this.inputDisplay) {
         default:

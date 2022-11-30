@@ -42,12 +42,14 @@ const generatedCode = computed(() => {
       return field;
     })
     .join("\r\n");
-  const methods = props.methods
-    .map((method) => {
-      method = method.trim();
-      return method;
-    })
-    .join("\r\n\r\n  ");
+  let methods = props.methods.map((method) => {
+    method = method.trim();
+    return method;
+  });
+  if (methods.length > 0) {
+    console.log("methods: " + methods);
+    methods = methods.join("\r\n\r\n");
+  }
   return `
 package ${props.pack}
 
